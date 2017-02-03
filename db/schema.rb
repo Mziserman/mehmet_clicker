@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202212930) do
+ActiveRecord::Schema.define(version: 20170203004057) do
+
+  create_table "bonuses", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "base_click_bonus",   default: 1
+    t.integer  "level_up_click_inc", default: 0
+    t.integer  "base_price",         default: 1
+    t.integer  "level_up_price_inc", default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "team_bonuses", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "bonus_id"
+    t.integer  "level",      default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

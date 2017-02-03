@@ -2,3 +2,10 @@
 <p>Find me in app/views/game/index.html.erb</p>
 score : <span class="score"><%= current_user.team.score %></span>
 <button id="clicker">click me</button>
+<div class="level_up">
+  <% current_user.team.team_bonuses.each do |tb| %>
+    <%= tb.bonus.name %> <br>
+    niveau: <span class="level" data-id="<%= tb.id %>"><%= tb.level %></span> <br>
+    <a href="#" data-id="<%= tb.id %>">Acheter</a> prix : <span class="price" data-id="<%= tb.id %>"><%= tb.price %></span>
+  <% end %>  
+</div>
