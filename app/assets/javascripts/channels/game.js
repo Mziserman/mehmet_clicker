@@ -8,18 +8,15 @@ App.game = App.cable.subscriptions.create("GameChannel", {
   },
 
   received: function(data) {
-  	console.log(data)
     $('.score').html(data.score)
   },
 
   click: function(team_id) {
-	return this.perform('click', {team_id: team_id});
+	return this.perform('click');
   }
 });
 
 
 $(document).on('click', '#clicker', function(e) {
-  var team_id = 1;
-  App.game.click(team_id)
-  console.log('oui')
+  App.game.click()
 })
