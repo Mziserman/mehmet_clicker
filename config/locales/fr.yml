@@ -135,16 +135,11 @@ fr:
       decimal_units:
         units:
           billion: milliard
-          million: million
           quadrillion: million de milliards
-          thousand: millier
           trillion: billion
           unit: ''
       format:
         delimiter: ''
-        precision: 3
-        significant: true
-        strip_insignificant_zeros: true
       storage_units:
         units:
           byte:

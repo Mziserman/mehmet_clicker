@@ -46,6 +46,7 @@ $(document).ready(function() {
 })
 
 $(document).on('click', '#clicker', function(e) {
+  e.preventDefault();
   App.game.click()
 })
 

@@ -1,1 +1,1 @@
-<%= number_to_human(number, locale: "fr") %>
+<%= ('%.0f' % number).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %>
