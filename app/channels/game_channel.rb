@@ -10,7 +10,10 @@ class GameChannel < ApplicationCable::Channel
   end
 
   def click(data)
-    team = Team.find(data[:team_id])
+    puts data
+    puts data
+    puts data
+    team = Team.find(data["team_id"])
     ModifyTeamScoreWorker.new.perform(team.id, team.click_bonus)
   end
 

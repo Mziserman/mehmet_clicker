@@ -37,14 +37,17 @@ $(document).ready(function() {
     },
 
     click: function(team_id) {
+      var team_id = $('#team_id').html()
       return this.perform('click', {team_id: team_id});
     },
 
     level_up: function(bonus_id) {
+      var team_id = $('#team_id').html()
       return this.perform('level_up', {bonus_id: bonus_id, team_id: team_id})
     },
 
     level_up_auto: function(bonus_id) {
+      var team_id = $('#team_id').html()
       return this.perform('level_up_auto', {bonus_id: bonus_id, team_id: team_id})
     }
   });
