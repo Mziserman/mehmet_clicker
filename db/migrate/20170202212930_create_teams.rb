@@ -2,7 +2,7 @@ class CreateTeams < ActiveRecord::Migration[5.0]
   def change
     create_table :teams do |t|
       t.string :name
-      t.integer :score, default: 0, limit: 8
+      t.integer :score, default: 0, limit: 16
       t.string :color
 
       t.timestamps

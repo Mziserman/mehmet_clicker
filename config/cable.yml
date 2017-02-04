@@ -9,4 +9,6 @@ test:
   <<: *default
 
 production:
-  <<: *default
+  adapter: redis
+  url: redis://redistogo:857cfe99c41ef1af402834cc9b4efde6@koi.redistogo.com:10956/
+

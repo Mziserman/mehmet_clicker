@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170203120034) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.integer  "score",      limit: 8, default: 0
+    t.integer  "score",      limit: 16, default: 0
     t.string   "color"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
