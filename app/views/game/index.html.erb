@@ -1,6 +1,6 @@
 <h1>Game#index</h1>
 <p>Find me in app/views/game/index.html.erb</p>
-score : <span class="score"><%= current_user.team.score %></span>
+score : <span class="score"><%= number_to_human(current_user.team.score) %></span>
 <button id="clicker">click me</button>
 <br><br>
 <div class="level_up_bonuses">

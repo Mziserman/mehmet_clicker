@@ -56,3 +56,4 @@ gem 'devise'
 gem 'whenever', :require => false
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'rufus-scheduler'

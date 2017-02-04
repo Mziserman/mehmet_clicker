@@ -189,6 +189,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rufus-scheduler
   sass-rails (~> 5.0)
   sidekiq
   sidekiq-scheduler
