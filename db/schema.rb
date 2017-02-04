@@ -10,16 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203004057) do
+ActiveRecord::Schema.define(version: 20170203120034) do
+
+  create_table "auto_clicker_bonuses", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "base_click_bonus",   default: 1
+    t.integer  "base_price",         default: 1
+    t.float    "level_up_click_inc", default: 1.0
+    t.float    "level_up_price_inc", default: 1.0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
 
   create_table "bonuses", force: :cascade do |t|
     t.string   "name"
     t.integer  "base_click_bonus",   default: 1
-    t.integer  "level_up_click_inc", default: 0
+    t.float    "level_up_click_inc", default: 1.0
     t.integer  "base_price",         default: 1
-    t.integer  "level_up_price_inc", default: 0
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.float    "level_up_price_inc", default: 1.0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "team_auto_clicker_bonuses", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "auto_clicker_bonus_id"
+    t.integer  "level",                 default: 1
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "team_bonuses", force: :cascade do |t|
@@ -32,10 +50,10 @@ ActiveRecord::Schema.define(version: 20170203004057) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.integer  "score",      default: 0
+    t.integer  "score",      limit: 16, default: 0
     t.string   "color"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "users", force: :cascade do |t|

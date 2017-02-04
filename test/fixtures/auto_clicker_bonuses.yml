@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base_click_bonus: 1
+  base_price: 1
+  level_up_click_bonus_inc: 1.5
+  level_up_price_inc: 1.5
+
+two:
+  base_click_bonus: 1
+  base_price: 1
+  level_up_click_bonus_inc: 1.5
+  level_up_price_inc: 1.5

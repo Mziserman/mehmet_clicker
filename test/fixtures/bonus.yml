@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  click_bonus: 1
+  level_up_click_inc: 1
+  price: 1
+  level_up_price_inc: 1
+
+two:
+  name: MyString
+  click_bonus: 1
+  level_up_click_inc: 1
+  price: 1
+  level_up_price_inc: 1

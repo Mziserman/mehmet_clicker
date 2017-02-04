@@ -2,10 +2,44 @@
 <p>Find me in app/views/game/index.html.erb</p>
 score : <span class="score"><%= current_user.team.score %></span>
 <button id="clicker">click me</button>
-<div class="level_up">
+<br><br>
+<div class="level_up_bonuses">
   <% current_user.team.team_bonuses.each do |tb| %>
-    <%= tb.bonus.name %> <br>
-    niveau: <span class="level" data-id="<%= tb.id %>"><%= tb.level %></span> <br>
-    <a href="#" data-id="<%= tb.id %>">Acheter</a> prix : <span class="price" data-id="<%= tb.id %>"><%= tb.price %></span>
+    <div data-id="<%= tb.bonus.id %>">
+      <%= tb.bonus.name %> <br>
+      click bonus: <span class="click_bonus"><%= tb.click_bonus %></span> <br>
+      niveau: <span class="level"><%= tb.level %></span> <br>
+      <a href="#">Acheter</a> prix : <span class="price"><%= tb.price %></span>
+      <br><br>
+    </div>
+  <% end %>
+  <% Bonus.where.not(id: current_user.team.bonuses.pluck(:id)).each do |b| %>
+    <div data-id="<%= b.id %>">
+      <%= b.name %> <br>
+      click bonus: <span class="click_bonus"><%= b.base_click_bonus %></span> <br>
+      niveau: <span class="level">1</span> <br>
+      <a href="#">Acheter</a> prix : <span class="price"><%= b.base_price %></span>
+      <br><br>
+    </div>
+  <% end %> 
+</div>
+<div class="level_up_auto_bonuses">
+  <% current_user.team.team_auto_clicker_bonuses.each do |tb| %>
+    <div data-id="<%= tb.auto_clicker_bonus.id %>">
+      <%= tb.auto_clicker_bonus.name %> <br>
+      click bonus: <span class="click_bonus"><%= tb.click_bonus %></span> <br>
+      niveau: <span class="level"><%= tb.level %></span> <br>
+      <a href="#">Acheter</a> prix : <span class="price"><%= tb.price %></span>
+      <br><br>
+    </div>
+  <% end %>
+  <% AutoClickerBonus.where.not(id: current_user.team.team_auto_clicker_bonuses.pluck(:id)).each do |b| %>
+    <div data-id="<%= b.id %>">
+      <%= b.name %> <br>
+      click bonus: <span class="click_bonus"><%= b.base_click_bonus %></span> <br>
+      niveau: <span class="level">1</span> <br>
+      <a href="#">Acheter</a> prix : <span class="price"><%= b.base_price %></span>
+      <br><br>
+    </div>
   <% end %>  
 </div>

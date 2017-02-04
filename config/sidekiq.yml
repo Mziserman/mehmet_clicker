@@ -1,0 +1,4 @@
+:schedule:
+  auto_clicker_bonus:
+    every: 10s
+    class: AutoClickerBonusWorker
