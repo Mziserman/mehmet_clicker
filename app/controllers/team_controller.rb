@@ -10,6 +10,11 @@ class TeamController < ApplicationController
     else
       iu = InvitedUser.create(team_id: params[:id])
     end
+    # redirect_to :controller => "game", :action => "index"
+
+    redirect_to action: "tampon"
+  end
+  def tampon
     redirect_to :controller => "game", :action => "index"
   end
 end
