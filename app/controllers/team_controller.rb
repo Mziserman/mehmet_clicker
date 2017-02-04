@@ -7,6 +7,8 @@ class TeamController < ApplicationController
       iu = InvitedUser.find(cookies.signed[:user_id])
       iu.team = Team.find(params[:id])
       iu.save
+    else
+      iu = InvitedUser.create(team_id: params[:id])
     end
     redirect_to :controller => "game", :action => "index"
   end
