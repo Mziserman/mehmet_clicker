@@ -2,6 +2,6 @@ require 'rufus-scheduler'
 
 s = Rufus::Scheduler.singleton
 
-s.every '1s' do
+s.every '20s' do
   AutoClickerBonusWorker.new.perform
 end

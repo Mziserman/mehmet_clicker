@@ -3,8 +3,11 @@ class TeamController < ApplicationController
     if user_signed_in?
       current_user.team = Team.find(params[:id])
       current_user.save
-    elsif
-      redirect_to :controller => "game", :action => "index"
+    elsif !cookies.signed[:user_id].blank?
+      iu = InvitedUser.find(cookies.signed[:user_id])
+      iu.team = Team.find(params[:id])
+      iu.save
     end
+    redirect_to :controller => "game", :action => "index"
   end
 end

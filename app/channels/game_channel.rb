@@ -11,6 +11,7 @@ class GameChannel < ApplicationCable::Channel
 
   def click(data)
     team = Team.find(current_user.team_id)
+    puts team.id
     ModifyTeamScoreWorker.new.perform(team.id, team.click_bonus)
   end
 
@@ -26,7 +27,7 @@ class GameChannel < ApplicationCable::Channel
     ActionCable.server.broadcast(channel, bonus_id: team_bonus.bonus.id,
       level: team_bonus.level, score: render_number(score),
       price: render_number(team_bonus.price),
-      click_bonus: render_number(team_bonus.click_bonus))
+      click_bonus: render_number(team_bonus.click_bonus), team_id: team.id)
   end
 
   def level_up_auto(data)
@@ -42,7 +43,8 @@ class GameChannel < ApplicationCable::Channel
       auto_clicker_bonus_id: team_auto_clicker_bonus.auto_clicker_bonus.id,
       level: team_auto_clicker_bonus.level, score: render_number(score),
       price: render_number(team_auto_clicker_bonus.price),
-      click_bonus: render_number(team_auto_clicker_bonus.click_bonus))
+      click_bonus: render_number(team_auto_clicker_bonus.click_bonus),
+      team_id: team.id)
   end
 
 
