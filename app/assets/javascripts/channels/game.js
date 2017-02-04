@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     received: function(data) {
       console.log(data)
+      var team_id = $('#team_id').html()
       if (data.team_id != team_id) {
         return
       }
