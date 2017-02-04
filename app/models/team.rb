@@ -2,6 +2,7 @@ class Team < ApplicationRecord
   include Buyer
 
   has_many :users
+  has_many :invited_users
   has_many :team_bonuses
   has_many :bonuses, through: :team_bonuses
 

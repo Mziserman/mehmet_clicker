@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203120034) do
+ActiveRecord::Schema.define(version: 20170204164123) do
 
   create_table "auto_clicker_bonuses", force: :cascade do |t|
     t.string   "name"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20170203120034) do
     t.float    "level_up_price_inc", default: 1.0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+  end
+
+  create_table "invited_users", force: :cascade do |t|
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_auto_clicker_bonuses", force: :cascade do |t|

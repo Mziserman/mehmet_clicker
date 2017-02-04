@@ -1,7 +1,5 @@
 class GameController < ApplicationController
   def index
-    if user_signed_in?
-      cookies.signed[:user_id] = current_user.id
-    end
+    @user = user_signed_in? ? current_user : InvitedUser.find(cookies.signed[:user_id])
   end
 end

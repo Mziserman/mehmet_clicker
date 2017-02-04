@@ -1,10 +1,10 @@
 <h1>Game#index</h1>
 <p>Find me in app/views/game/index.html.erb</p>
-score : <span class="score"><%= number_to_human(current_user.team.score) %></span>
+score : <span class="score"><%= number_to_human(@user.team.score) %></span>
 <button id="clicker">click me</button>
 <br><br>
 <div class="level_up_bonuses">
-  <% current_user.team.team_bonuses.each do |tb| %>
+  <% @user.team.team_bonuses.each do |tb| %>
     <div data-id="<%= tb.bonus.id %>">
       <%= tb.bonus.name %> <br>
       click bonus: <span class="click_bonus"><%= number_to_human(tb.click_bonus) %></span> <br>
@@ -13,7 +13,7 @@ score : <span class="score"><%= number_to_human(current_user.team.score) %></spa
       <br><br>
     </div>
   <% end %>
-  <% Bonus.where.not(id: current_user.team.bonuses.pluck(:id)).each do |b| %>
+  <% Bonus.where.not(id: @user.team.bonuses.pluck(:id)).each do |b| %>
     <div data-id="<%= b.id %>">
       <%= b.name %> <br>
       click bonus: <span class="click_bonus"><%= number_to_human(b.base_click_bonus) %></span> <br>
@@ -24,7 +24,7 @@ score : <span class="score"><%= number_to_human(current_user.team.score) %></spa
   <% end %> 
 </div>
 <div class="level_up_auto_bonuses">
-  <% current_user.team.team_auto_clicker_bonuses.each do |tb| %>
+  <% @user.team.team_auto_clicker_bonuses.each do |tb| %>
     <div data-id="<%= tb.auto_clicker_bonus.id %>">
       <%= tb.auto_clicker_bonus.name %> <br>
       click bonus: <span class="click_bonus"><%= number_to_human(tb.click_bonus) %></span> <br>
@@ -33,7 +33,7 @@ score : <span class="score"><%= number_to_human(current_user.team.score) %></spa
       <br><br>
     </div>
   <% end %>
-  <% AutoClickerBonus.where.not(id: current_user.team.team_auto_clicker_bonuses.pluck(:id)).each do |b| %>
+  <% AutoClickerBonus.where.not(id: @user.team.team_auto_clicker_bonuses.pluck(:id)).each do |b| %>
     <div data-id="<%= b.id %>">
       <%= b.name %> <br>
       click bonus: <span class="click_bonus"><%= number_to_human(b.base_click_bonus) %></span> <br>
