@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170204164123) do
     t.string   "name"
     t.integer  "base_click_bonus",   default: 1
     t.integer  "base_price",         default: 1
-    t.float    "level_up_click_inc", default: 1.0
-    t.float    "level_up_price_inc", default: 1.0
+    t.float    "level_up_click_inc", default: 0.3
+    t.float    "level_up_price_inc", default: 0.6
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20170204164123) do
   create_table "bonuses", force: :cascade do |t|
     t.string   "name"
     t.integer  "base_click_bonus",   default: 1
-    t.float    "level_up_click_inc", default: 1.0
+    t.float    "level_up_click_inc", default: 0.3
     t.integer  "base_price",         default: 1
-    t.float    "level_up_price_inc", default: 1.0
+    t.float    "level_up_price_inc", default: 0.6
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170204164123) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.integer  "score",      limit: 16, default: 0
+    t.decimal  "score",      default: "0.0"
     t.string   "color"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
