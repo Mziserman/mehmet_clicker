@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'game/index'
 
+  get 'team/index'
   get 'team/join'
   get 'team/tampon'
 

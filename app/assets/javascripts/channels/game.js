@@ -1,7 +1,5 @@
-$(document).ready(function() {
-  var team_id = $('#team_id').html()
-  
-  App.game = App.cable.subscriptions.create({channel: "GameChannel", team_id: team_id}, {
+$(document).ready(function() {  
+  App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
       // Called when the subscription is ready for use on the server
     },
@@ -12,10 +10,6 @@ $(document).ready(function() {
 
     received: function(data) {
       console.log(data)
-      var team_id = $('#team_id').html()
-      if (data.team_id != team_id) {
-        return
-      }
       if (data.score != undefined) {
         $('.score').html(data.score)
       }
@@ -38,18 +32,15 @@ $(document).ready(function() {
     },
 
     click: function(team_id) {
-      var team_id = $('#team_id').html()
-      return this.perform('click', {team_id: team_id});
+      return this.perform('click');
     },
 
     level_up: function(bonus_id) {
-      var team_id = $('#team_id').html()
-      return this.perform('level_up', {bonus_id: bonus_id, team_id: team_id})
+      return this.perform('level_up', {bonus_id: bonus_id})
     },
 
     level_up_auto: function(bonus_id) {
-      var team_id = $('#team_id').html()
-      return this.perform('level_up_auto', {bonus_id: bonus_id, team_id: team_id})
+      return this.perform('level_up_auto', {bonus_id: bonus_id})
     }
   });
 })

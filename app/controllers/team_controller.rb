@@ -17,6 +17,10 @@ class TeamController < ApplicationController
     redirect_to :controller => "game", :action => "index"
   end
 
+  def index
+    @teams = Team.all
+  end
+
   def refresh_connection(user)
     ActionCable.server.remote_connections.where(current_user: user).disconnect
     ActionCable.server.add_connection(current_user: user)

@@ -12,8 +12,7 @@ class AutoClickerBonusWorker
       template = 'team_%s'
       channel = template % [t.id]
 
-      ActionCable.server.broadcast(channel, score: render_number(t.score),
-        team_id: t.id)
+      ActionCable.server.broadcast(channel, score: render_number(t.score))
     end
   end
 

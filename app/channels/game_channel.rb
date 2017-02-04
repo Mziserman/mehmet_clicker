@@ -26,7 +26,7 @@ class GameChannel < ApplicationCable::Channel
     ActionCable.server.broadcast(channel, bonus_id: team_bonus.bonus.id,
       level: team_bonus.level, score: render_number(score),
       price: render_number(team_bonus.price),
-      click_bonus: render_number(team_bonus.click_bonus), team_id: team.id)
+      click_bonus: render_number(team_bonus.click_bonus))
   end
 
   def level_up_auto(data)
@@ -42,8 +42,7 @@ class GameChannel < ApplicationCable::Channel
       auto_clicker_bonus_id: team_auto_clicker_bonus.auto_clicker_bonus.id,
       level: team_auto_clicker_bonus.level, score: render_number(score),
       price: render_number(team_auto_clicker_bonus.price),
-      click_bonus: render_number(team_auto_clicker_bonus.click_bonus),
-      team_id: team.id)
+      click_bonus: render_number(team_auto_clicker_bonus.click_bonus))
   end
 
 
