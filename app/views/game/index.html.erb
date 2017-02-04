@@ -7,18 +7,18 @@ score : <span class="score"><%= number_to_human(current_user.team.score) %></spa
   <% current_user.team.team_bonuses.each do |tb| %>
     <div data-id="<%= tb.bonus.id %>">
       <%= tb.bonus.name %> <br>
-      click bonus: <span class="click_bonus"><%= tb.click_bonus %></span> <br>
+      click bonus: <span class="click_bonus"><%= number_to_human(tb.click_bonus) %></span> <br>
       niveau: <span class="level"><%= tb.level %></span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= tb.price %></span>
+      <a href="#">Acheter</a> prix : <span class="price"><%= number_to_human(tb.price) %></span>
       <br><br>
     </div>
   <% end %>
   <% Bonus.where.not(id: current_user.team.bonuses.pluck(:id)).each do |b| %>
     <div data-id="<%= b.id %>">
       <%= b.name %> <br>
-      click bonus: <span class="click_bonus"><%= b.base_click_bonus %></span> <br>
+      click bonus: <span class="click_bonus"><%= number_to_human(b.base_click_bonus) %></span> <br>
       niveau: <span class="level">1</span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= b.base_price %></span>
+      <a href="#">Acheter</a> prix : <span class="price"><%= number_to_human(b.base_price) %></span>
       <br><br>
     </div>
   <% end %> 
@@ -27,18 +27,18 @@ score : <span class="score"><%= number_to_human(current_user.team.score) %></spa
   <% current_user.team.team_auto_clicker_bonuses.each do |tb| %>
     <div data-id="<%= tb.auto_clicker_bonus.id %>">
       <%= tb.auto_clicker_bonus.name %> <br>
-      click bonus: <span class="click_bonus"><%= tb.click_bonus %></span> <br>
+      click bonus: <span class="click_bonus"><%= number_to_human(tb.click_bonus) %></span> <br>
       niveau: <span class="level"><%= tb.level %></span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= tb.price %></span>
+      <a href="#">Acheter</a> prix : <span class="price"><%= number_to_human(tb.price) %></span>
       <br><br>
     </div>
   <% end %>
   <% AutoClickerBonus.where.not(id: current_user.team.team_auto_clicker_bonuses.pluck(:id)).each do |b| %>
     <div data-id="<%= b.id %>">
       <%= b.name %> <br>
-      click bonus: <span class="click_bonus"><%= b.base_click_bonus %></span> <br>
+      click bonus: <span class="click_bonus"><%= number_to_human(b.base_click_bonus) %></span> <br>
       niveau: <span class="level">1</span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= b.base_price %></span>
+      <a href="#">Acheter</a> prix : <span class="price"><%= number_to_human(b.base_price) %></span>
       <br><br>
     </div>
   <% end %>  

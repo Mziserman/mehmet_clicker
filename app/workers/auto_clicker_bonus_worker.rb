@@ -12,7 +12,15 @@ class AutoClickerBonusWorker
       template = 'team_%s'
       channel = template % [t.id]
 
-      ActionCable.server.broadcast(channel, score: t.score)
+      ActionCable.server.broadcast(channel, score: render_number(t.score))
     end
+  end
+
+  def render_number(number)
+    ApplicationController.render(
+      partial: 'game/number',
+      locals: {
+        number: number,
+      })
   end
 end

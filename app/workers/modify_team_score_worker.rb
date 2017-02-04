@@ -8,6 +8,14 @@ class ModifyTeamScoreWorker
     template = 'team_%s'
     channel = template % [team_id]
 
-    ActionCable.server.broadcast(channel, score: t.score)
+    ActionCable.server.broadcast(channel, score: render_number(t.score))
+  end
+
+  def render_number(number)
+    ApplicationController.render(
+      partial: 'game/number',
+      locals: {
+        number: number,
+      })
   end
 end
