@@ -11,6 +11,7 @@ $(document).ready(function() {
     },
 
     received: function(data) {
+      console.log(data)
       if (data.team_id != team_id) {
         return
       }
