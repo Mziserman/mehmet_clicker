@@ -14,7 +14,14 @@ class ModifyTeamScoreWorker
       .gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
 
     ActionCable.server.broadcast(channel, score: render_number(t.score),
-      bonus: 1 + increment, completion: rounded_percent_completion)
+      bonus: 1 + increment, completion: rounded_percent_completion,
+      team_name: t.name)
+    Team.find_each do |team|
+      template = 'team_%s'
+      channel = template % [team.id]
+      ActionCable.server.broadcast(channel, completion: rounded_percent_completion,
+        team_name: t.name)
+    end
   end
 
   def render_number(number)

@@ -35,7 +35,10 @@ $(document).ready(function() {
 
       if (data.completion != undefined) {
         $('.percent_completion').html("(" + data.completion + " %)")
-        $('.indicator').css('width', data.completion + "%")
+      }
+      if (data.team_name != undefined) {
+        console.log(data)
+        $('.indicator.' + data.team_name).css('width', data.completion + "%")
       }
     },
 

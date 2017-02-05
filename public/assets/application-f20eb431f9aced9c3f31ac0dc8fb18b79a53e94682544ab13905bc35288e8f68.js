@@ -17572,10 +17572,11 @@ $(document).ready(function() {
     },
 
     received: function(data) {
-      console.log(data)
       if (data.score != undefined) {
         $('.loader').css('display', 'none')
         $('.score').html(data.score)
+      }
+      if (data.bonus) {
         bubble(data.bonus)
       }
       if (data.bonus_id != undefined) {
@@ -17597,6 +17598,10 @@ $(document).ready(function() {
 
       if (data.completion != undefined) {
         $('.percent_completion').html("(" + data.completion + " %)")
+      }
+      if (data.team_name != undefined) {
+        console.log(data)
+        $('.indicator.' + data.team_name).css('width', data.completion + "%")
       }
     },
 
@@ -17644,7 +17649,7 @@ $(document).mousemove(function(e) {
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
-    $('#defaultCanvas0').css({'position': 'fixed', 'bottom': 0,
+    $('#defaultCanvas0').css({'position': 'absolute', 'bottom': 0,
 		'right': 0,
 		'left': 0,
 		'top': 0,
@@ -17676,8 +17681,10 @@ function draw() {
 }
 
 function bubble(bonus) {
-	b = new Bubble(bonus)
-	b.index = bubbles.push(b)
+	if (bubbles.length < 30) {
+		b = new Bubble(bonus)
+		b.index = bubbles.push(b)
+	}
 }
 
 Bubble = function(bonus) {
