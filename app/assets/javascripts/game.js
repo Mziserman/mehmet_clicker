@@ -26,6 +26,9 @@ function draw() {
 	clear()
     for (i = 0; i < bubbles.length; i++) {
     	b = bubbles[i]
+    	if (b.alpha <= 0) {
+			bubbles.splice(i, 1)
+		}
     	fill(200, 0, 0, b.alpha)
     	ellipse(b.x, b.y, 80, 80)
     	b.update_position()
@@ -36,7 +39,7 @@ function draw() {
 
 function bubble(bonus) {
 	b = new Bubble(bonus)
-	bubbles.push(b)
+	b.index = bubbles.push(b)
 }
 
 Bubble = function(bonus) {
@@ -50,7 +53,7 @@ Bubble.prototype.init = function(bonus) {
 	this.left_strength = Math.random(10)
 	this.x_speed = Math.random(5)
 	this.y_speed = Math.random(6)
-	this.alpha = 100
+	this.alpha = 150
 	this.decay = -1
 }
 
@@ -58,10 +61,4 @@ Bubble.prototype.update_position = function() {
 	this.x -= this.x_speed
 	this.y += (this.right_strength - this.left_strength) * this.y_speed
 	this.alpha += this.decay
-	if (this.alpha <= 0) {
-		var id = bubbles.indexOf(this)
-		if (id != -1) {
-			bubbles.slice(id, 1)
-		}
-	}
 }
