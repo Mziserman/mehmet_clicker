@@ -8,7 +8,8 @@ class ModifyTeamScoreWorker
     template = 'team_%s'
     channel = template % [team_id]
 
-    ActionCable.server.broadcast(channel, score: render_number(t.score))
+    ActionCable.server.broadcast(channel, score: render_number(t.score),
+      bonus: 1 + increment)
   end
 
   def render_number(number)

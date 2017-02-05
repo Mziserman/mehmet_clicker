@@ -13,6 +13,7 @@ $(document).ready(function() {
       if (data.score != undefined) {
         $('.loader').css('display', 'none')
         $('.score').html(data.score)
+        bubble(data.bonus)
       }
       if (data.bonus_id != undefined) {
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
