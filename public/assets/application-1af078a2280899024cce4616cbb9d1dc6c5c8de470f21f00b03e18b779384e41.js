@@ -17597,7 +17597,11 @@ $(document).ready(function() {
       }
 
       if (data.completion != undefined) {
-        $('.percent_completion').html("(" + data.completion + " %)")
+        $('.percent_completion.' + data.team_name).html("(" + data.completion + " %)")
+      }
+      if (data.team_name != undefined) {
+        console.log(data)
+        $('.indicator.' + data.team_name).css('width', data.completion + "%")
       }
     },
 
@@ -17645,7 +17649,7 @@ $(document).mousemove(function(e) {
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
-    $('#defaultCanvas0').css({'position': 'fixed', 'bottom': 0,
+    $('#defaultCanvas0').css({'position': 'absolute', 'bottom': 0,
 		'right': 0,
 		'left': 0,
 		'top': 0,
@@ -17668,7 +17672,7 @@ function draw() {
     	// ellipse(b.x, b.y, 80, 80)
     	b.update_position()
 	   	fill(255, 255, 255, b.alpha)
-    	text("+ " + Math.floor(b.bonus), b.x, b.y + 4)
+    	text("+ " + Math.floor(b.bonus), b.x, b.y)
     }
     for (var i = 0; i < toRemove.length; i++) {
 		bubbles.splice(toRemove[i], 1)
@@ -17693,7 +17697,8 @@ Bubble.prototype.init = function(bonus) {
 	this.speed = Math.random(7, 10)
 	this.alpha = 350
 	this.decay = -1
-	this.angle = Math.random(0, 2*Math.PI)
+	this.angle = random(TWO_PI)
+	console.log(this.angle)
 }
 
 Bubble.prototype.update_position = function() {

@@ -34,7 +34,7 @@ function draw() {
     	// ellipse(b.x, b.y, 80, 80)
     	b.update_position()
 	   	fill(255, 255, 255, b.alpha)
-    	text("+ " + Math.floor(b.bonus), b.x, b.y + 4)
+    	text("+ " + Math.floor(b.bonus), b.x, b.y)
     }
     for (var i = 0; i < toRemove.length; i++) {
 		bubbles.splice(toRemove[i], 1)
@@ -59,7 +59,8 @@ Bubble.prototype.init = function(bonus) {
 	this.speed = Math.random(7, 10)
 	this.alpha = 350
 	this.decay = -1
-	this.angle = Math.random(0, 2*Math.PI)
+	this.angle = random(TWO_PI)
+	console.log(this.angle)
 }
 
 Bubble.prototype.update_position = function() {
