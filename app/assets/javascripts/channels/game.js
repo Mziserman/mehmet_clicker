@@ -4,7 +4,8 @@ $(document).ready(function() {
 
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
-      this.get_team()
+      $('.loader').css('display', 'none');
+      this.get_team();
     },
 
     disconnected: function() {
@@ -13,7 +14,6 @@ $(document).ready(function() {
 
     received: function(data) {
       if (data.score != undefined) {
-        $('.loader').css('display', 'none');
         if ($('.score.' + data.team_name).html() != undefined) {
           var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
           if (current < data.score) {
@@ -67,6 +67,7 @@ $(document).ready(function() {
     },
 
     get_team: function() {
+      console.log('get_team')
       return this.perform('get_team')
     }
   });
@@ -82,6 +83,13 @@ $(document).on('click', '#clicker', function(e) {
   str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
   str = str.substring(0, str.length - 3);
 
+  if ($('.score.' + team_name).html() != undefined) {
+      var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
+      if (current < score) {
+        $('.score.' + team_name).html(score);
+        $('.team_score.' + team_name).html(score);
+      }
+    }
   $('.team_score.' + team_name).html(str);
   $('.score').html(str);
 })

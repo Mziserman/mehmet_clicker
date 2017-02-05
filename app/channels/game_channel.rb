@@ -17,7 +17,7 @@ class GameChannel < ApplicationCable::Channel
   def get_team(data)
     template = 'team_%s'
     channel = template % [current_user.team_id]
-    ActionCable.server.broadcast(channel, user_team_name: current_user.team_name)
+    ActionCable.server.broadcast(channel, user_team_name: current_user.team.name)
   end
 
   def level_up(data)
