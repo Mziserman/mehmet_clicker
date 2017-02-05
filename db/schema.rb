@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204164123) do
+ActiveRecord::Schema.define(version: 20170205140446) do
 
   create_table "auto_clicker_bonuses", force: :cascade do |t|
     t.string   "name"
@@ -32,10 +32,23 @@ ActiveRecord::Schema.define(version: 20170204164123) do
     t.datetime "updated_at",                       null: false
   end
 
+  create_table "goals", force: :cascade do |t|
+    t.integer  "score"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "team_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "invited_users", force: :cascade do |t|
     t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.integer  "click_count"
+    t.integer  "expenses_count"
+    t.integer  "points_earned"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "team_auto_clicker_bonuses", force: :cascade do |t|
@@ -74,6 +87,9 @@ ActiveRecord::Schema.define(version: 20170204164123) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "team_id"
+    t.integer  "click_count"
+    t.integer  "expenses_count"
+    t.integer  "points_earned"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true

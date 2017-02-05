@@ -32,6 +32,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       t.integer :team_id
 
+      t.integer :click_count
+      t.integer :expenses_count
+      t.integer :points_earned
+
       t.timestamps null: false
     end
 

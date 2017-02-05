@@ -24,16 +24,18 @@
 
   <% @teams.each do |team| %>
       <div class="row">
-        <p class="team_name"><%= team.name %></p>
+        <p class="team_name"><%= team.name.upcase %></p>
       </div>
       <div class="row">
         <div class="jauge">
+          <% percent_completion = ((team.score / team.goal.score).to_f < 1 ? (team.score / team.goal.score).to_f * 100 : 100) %>
           <div class="indicator" 
-            style="width: 50%; background-color: #999"></div>
+            style="width: <%= percent_completion %>% ; background-color: <%= team.color %>"></div>
         </div>
       </div>
       <div class="row">
-        <a href="<%= url_for(:controller => 'team', :action => 'join', :id => team.id) %>">Join</a>
+        <p class="goal_description"><%= team.goal.description %></p>
+        <a class="join_team"href="<%= url_for(:controller => 'team', :action => 'join', :id => team.id) %>">Join</a>
       </div>
   <% end %>
 </div>

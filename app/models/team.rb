@@ -1,6 +1,8 @@
 class Team < ApplicationRecord
   include Buyer
 
+  has_one :goal
+
   has_many :users
   has_many :invited_users
   has_many :team_bonuses

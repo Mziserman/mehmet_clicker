@@ -13,5 +13,6 @@ class HomeController < ApplicationController
       redirect_to(:controller => "game", :action => "index") unless current_user.team.blank?
     end
     @teams = Team.all
+    @goals = Goal.all
   end
 end

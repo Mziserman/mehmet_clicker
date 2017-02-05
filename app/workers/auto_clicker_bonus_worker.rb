@@ -8,12 +8,15 @@ class AutoClickerBonusWorker
         score_bonus += tacb.click_bonus
       end
       t.update!(score: t.score + score_bonus)
-
+      percent_completion = ((t.score / Goal.first.score)
+        .to_f < 1 ? (t.score / Goal.first.score).to_f * 100 : 100)
+      rounded_percent_completion = ('%.2f' % percent_completion).to_s.reverse
+        .gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
       template = 'team_%s'
       channel = template % [t.id]
 
       ActionCable.server.broadcast(channel, score: render_number(t.score),
-        bonus: score_bonus)
+        bonus: score_bonus, completion: rounded_percent_completion)
     end
   end
 

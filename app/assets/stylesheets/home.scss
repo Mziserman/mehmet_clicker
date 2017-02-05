@@ -14,6 +14,7 @@
 		margin-bottom: 75px;
 	}
 	.presentation {
+		width: 100%;
 		margin-bottom: 75px;
 		text-align: center;
 	}
@@ -29,7 +30,9 @@
 			height: 5px;
 		}
 	}
-	a {
+	a.join_team {
 		margin-bottom: 15px;
+		position: absolute;
+		right: 0;
 	}
 }

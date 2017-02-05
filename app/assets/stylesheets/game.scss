@@ -57,17 +57,22 @@ html, body {
 		pointer-events: none;
 	}
 	.game {	
+		display: inline-block;
+		width: 70%;
 		.score_title {
 			text-align: center;
 			color: $font-light-black;
 			font-size: $font-size;
 			margin-bottom: 0;
 		}
-		.score {
+		.score_container {
 			text-align: center;
-			color: white;
-			font-size: $font-size-large;
+			.score {
+				color: white;
+				font-size: $font-size-large;
+			}
 		}
+		
 		.clicker_round {
 			width: 350px;
 			height: 350px;
@@ -80,6 +85,48 @@ html, body {
 				position: relative;
 				top: 50%;
 				transform: translateY(-50%);
+			}
+		}
+		.invitation {
+			width: 300px;
+			margin: 0 auto;
+			text-align: center;
+			p {
+				
+				&.union {
+					color: $font-light-black;
+					margin: 0;
+				}
+				&.cta {
+
+				}	
+			}
+		}
+	}
+	.leaderboard {
+		width: 30%;
+		height: 100%;
+		border-left: 1px solid $light-black;
+		display: inline-block;
+		position: absolute;
+		right: 0px;
+		p {
+			text-align: center;
+		}
+		.leaderboard_container {
+			margin-top: 300px;
+			transform: rotate(-90deg);
+			.team_name {
+				margin-bottom: 5px;
+			}
+			.jauge {
+				width: 1000px;
+				height: 5px;
+				background-color: $light-black;
+				margin-bottom: 5px;
+				.indicator {
+					height: 5px;
+				}
 			}
 		}
 	}

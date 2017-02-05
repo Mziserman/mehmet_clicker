@@ -27,12 +27,11 @@ function draw() {
     for (var i = 0; i < bubbles.length; i++) {
     	b = bubbles[i]
     	if (b.alpha <= 0) {
-    		console.log(b)
     		toRemove.push(i)
 		}
-    	fill(255, 59, 158, b.alpha)
-    	stroke(255, 59, 158, b.alpha + 30)
-    	ellipse(b.x, b.y, 80, 80)
+    	// fill(255, 59, 158, b.alpha)
+    	// stroke(255, 59, 158, b.alpha + 30)
+    	// ellipse(b.x, b.y, 80, 80)
     	b.update_position()
 	   	fill(255, 255, 255, b.alpha)
     	text("+ " + Math.floor(b.bonus), b.x, b.y + 4)
@@ -55,10 +54,10 @@ Bubble.prototype.init = function(bonus) {
 	this.x = mouseX
 	this.y = mouseY
 	this.bonus = bonus
-	this.speed = Math.random(5)
-	this.alpha = 150
+	this.speed = Math.random(7, 10)
+	this.alpha = 350
 	this.decay = -1
-	this.angle = random(0, TWO_PI)
+	this.angle = Math.random(0, 2*Math.PI)
 }
 
 Bubble.prototype.update_position = function() {

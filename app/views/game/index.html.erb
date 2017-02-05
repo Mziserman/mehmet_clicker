@@ -6,10 +6,28 @@
     <div class="bounce3"></div>
   </div>
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="game">
+    <div class="logo">
+      <svg width="171px" height="59px" viewBox="0 0 171 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <text id="mehmet" stroke="none" fill="none" font-family=".SFNSDisplay, .SF NS Display" font-size="50" font-weight="normal" letter-spacing="-1.78571415">
+              <tspan x="0" y="48" fill="#FF8B9E">m</tspan>
+              <tspan x="40.084403" y="48" fill="#FEE9BD">e</tspan>
+              <tspan x="65.1053295" y="48" fill="#FF8B9E">h</tspan>
+              <tspan x="91.5178576" y="48" fill="#FEE9BD">m</tspan>
+              <tspan x="131.602261" y="48" fill="#FF8B9E">e</tspan>
+              <tspan x="156.623187" y="48" fill="#FEE9BD">t</tspan>
+          </text>
+      </svg>
+    </div>
     <p class="score_title">VOTRE SCORE</p>
-    <p class="score"><%= ('%.0f' % @user.team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></p>  
+    <% percent_completion = ((@user.team.score / @user.team.goal.score).to_f < 1 ? (@user.team.score / @user.team.goal.score).to_f * 100 : 100)
+      rounded_percent_completion = ('%.2f' % percent_completion).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+      score = ('%.0f' % @user.team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %>
+    <p class="score_container"><span class="score"><%= score %></span> <span class="percent_completion">(<%= rounded_percent_completion %> %)</span></p>  
 
     <div class="clicker_round">  
       <div id="clicker">
@@ -32,13 +50,17 @@
     </div>
 
     <br><br>
-    <a class="twitter-share-button"
-      href="https://twitter.com/intent/tweet"
-      data-text="À l'aide"
-      data-url="https://mehmet-clicker.herokuapp.com/team/join?id=<%= @user.team.id %>">
-    Tweet</a>
+    <div class="invitation">
+      <p class="union">L'UNION FAIT LA FORCE</p>
+      <p class="cta">Invite tes amis à aider ton clan</p>
+      <a class="twitter-share-button"
+        href="https://twitter.com/intent/tweet"
+        data-text="À l'aide"
+        data-url="https://mehmet-clicker.herokuapp.com/team/join?id=<%= @user.team.id %>"
+        data-size="large">
+      Tweet</a>
+    </div>
     <div class="level_up_bonuses">
-
       <% @user.team.team_bonuses.each do |tb| %>
         <div data-id="<%= tb.bonus.id %>">
           <%= tb.bonus.name %> <br>
@@ -84,6 +106,24 @@
       <% end %>  
 
     </div>
+
+  </div>
+  <div class="leaderboard">
+    <p>LEADERBOARD</p>
+    <div class="leaderboard_container">
+      <% @teams.each do |team| %>
+        <div class="row">
+          <p class="team_name"><%= team.name.upcase %></p>
+        </div>
+        <div class="row">
+          <div class="jauge">
+            <% percent_completion = ((team.score / team.goal.score).to_f < 1 ? (team.score / team.goal.score).to_f * 100 : 100) %>
+            <div class="indicator" 
+              style="width: <%= percent_completion %>% ; background-color: <%= team.color %>"></div>
+          </div>
+        </div>
+    <% end %>
+  </div>
 
   </div>
 </div>

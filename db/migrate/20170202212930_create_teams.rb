@@ -5,6 +5,7 @@ class CreateTeams < ActiveRecord::Migration[5.0]
       t.decimal :score, default: 0
       t.string :color
 
+
       t.timestamps
     end
   end
