@@ -17562,7 +17562,7 @@ var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationDat
 
 }).call(this);
 var bonus = 0;
-var score = 0;
+var team_name = ""
 $(document).ready(function() {  
 
   App.game = App.cable.subscriptions.create("GameChannel", {
@@ -17577,12 +17577,16 @@ $(document).ready(function() {
     received: function(data) {
       if (data.score != undefined) {
         $('.loader').css('display', 'none');
-        $('.score').html(data.score);
-        score = data.score
+        $('.score.' + data.team_name).html(data.score);
+        $('.team_score.' + data.team_name).html(data.score);
       }
-      if (data.bonus) {
+      if (data.user_team_name != undefined) {
+        team_name = data.user_team_name
+      }
+      if (data.bonus != undefined) {
+        team_name = data.team_name;
         bubble(data.bonus)
-        bonus = data.bonus;
+        bonus = data.bonus * 1;
       }
       if (data.bonus_id != undefined) {
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
@@ -17627,8 +17631,14 @@ $(document).on('click', '#clicker', function(e) {
   e.preventDefault();
   App.game.click();
   bubble(bonus);
+  var score = parseInt($('.score').html().replace(/\s/g, ''))
+
   score += bonus;
-  $('.score').html(Math.flood(score));
+  str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
+  str = str.substring(0, str.length - 3);
+
+  $('.team_score.' + team_name).html(str);
+  $('.score').html(str);
 })
 
 $(document).on('click', '.level_up_bonuses a', function(e) {

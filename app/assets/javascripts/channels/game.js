@@ -13,12 +13,15 @@ $(document).ready(function() {
 
     received: function(data) {
       if (data.score != undefined) {
-        team_name = data.team_name;
         $('.loader').css('display', 'none');
         $('.score.' + data.team_name).html(data.score);
         $('.team_score.' + data.team_name).html(data.score);
       }
-      if (data.bonus) {
+      if (data.user_team_name != undefined) {
+        team_name = data.user_team_name
+      }
+      if (data.bonus != undefined) {
+        team_name = data.team_name;
         bubble(data.bonus)
         bonus = data.bonus * 1;
       }
