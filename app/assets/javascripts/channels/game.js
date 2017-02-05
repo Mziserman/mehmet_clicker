@@ -13,7 +13,7 @@ $(document).ready(function() {
     received: function(data) {
       if (data.score != undefined) {
         $('.loader').css('display', 'none');
-        $('.score').html(data.score);
+        $('.score.' + data.team_name).html(data.score);
         $('.team_score.' + data.team_name).html(data.score);
       }
       if (data.bonus) {

@@ -27,7 +27,7 @@
     <% percent_completion = ((@user.team.score / @user.team.goal.score).to_f < 1 ? (@user.team.score / @user.team.goal.score).to_f * 100 : 100)
       rounded_percent_completion = ('%.2f' % percent_completion).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
       score = ('%.0f' % @user.team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %>
-    <p class="score_container"><span class="score"><%= score %></span> <span class="percent_completion <%= @user.team.name %>">(<%= rounded_percent_completion %> %)</span></p>  
+    <p class="score_container"><span class="score <%= @user.team.name %>"><%= score %></span> <span class="percent_completion <%= @user.team.name %>">(<%= rounded_percent_completion %> %)</span></p>  
 
     <div class="clicker_round">  
       <div id="clicker">
