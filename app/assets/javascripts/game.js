@@ -19,7 +19,6 @@ function setup() {
     textAlign(CENTER)
     textSize(16);
     colorMode('RGBA')
-    noStroke()
 }
 
 function draw() {
@@ -29,11 +28,12 @@ function draw() {
     	if (b.alpha <= 0) {
 			bubbles.splice(i, 1)
 		}
-    	fill(200, 0, 0, b.alpha)
+    	fill(255, 59, 158, b.alpha)
+    	stroke(255, 59, 158, b.alpha + 30)
     	ellipse(b.x, b.y, 80, 80)
     	b.update_position()
-	   	fill(0, 0, 0, b.alpha)
-    	text("+ " + Math.floor(b.bonus), b.x, b.y)
+	   	fill(255, 255, 255, b.alpha)
+    	text("+ " + Math.floor(b.bonus), b.x, b.y + 4)
     }
 }
 
@@ -52,7 +52,7 @@ Bubble.prototype.init = function(bonus) {
 	this.right_strength = Math.random(10)
 	this.left_strength = Math.random(10)
 	this.x_speed = Math.random(5)
-	this.y_speed = Math.random(6)
+	this.y_speed = Math.random(2) - 1
 	this.alpha = 150
 	this.decay = -1
 }
