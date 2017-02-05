@@ -11,6 +11,7 @@ $(document).ready(function() {
     received: function(data) {
       console.log(data)
       if (data.score != undefined) {
+        $('.loader').css('display', 'none')
         $('.score').html(data.score)
       }
       if (data.bonus_id != undefined) {

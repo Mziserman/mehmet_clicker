@@ -1,62 +1,96 @@
-<div id="team_id"><%= @team.id %></div>
+<div class="loader"></div>
+<div class="container">
+  <div class="game">
+    <p class="score_title">VOTRE SCORE</p>
+    <p class="score"><%= ('%.0f' % @user.team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></p>  
 
-score : <span class="score"><%= '%.0f' % @user.team.score %></span>
-<div id="clicker">
-  
-<svg width="162px" height="188px" viewBox="107 98 162 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-  <desc>Created with Sketch.</desc>
-  <defs></defs>
-  <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(107.500000, 98.000000)">
-    <polygon id="Path-3" fill="#FF8B9E" points="0.122785296 51.631261 0.108843537 182.844646 12.7571732 179.664177 12.7571732 52.0949067"></polygon>
-    <polygon id="Path-5" fill="#FEE9BD" points="160.91349 21.1291013 160.91349 157.963954 10.660681 179.058329 9.19184275 56.2392077"></polygon>
-    <polygon id="Path-4" fill="#FF8B9E" points="0.108843537 51.5948996 160.91349 21.1354157 160.91349 33.3520046 0.39445098 64.2226946"></polygon>
-    <polygon id="Path-4" fill="#FF8B9E" points="0.388228707 96.091941 160.91349 65.2594305 160.91349 78.0859389 0.67383615 108.719736"></polygon>
-    <polygon id="Path-4" fill="#FF8B9E" points="0.0979963367 175.116254 160.91349 144.130328 160.91349 157.966127 0.0979963367 187.807117"></polygon>
-    <polygon id="Path-4" fill="#FF8B9E" points="0.388228707 136.139278 160.91349 104.95927 160.91349 118.140609 0.67383615 148.767073"></polygon>
-    <polygon id="Path-2" fill="#FFFFFF" points="0.134561344 51.5924238 85.8820942 4.44970414 160.914912 21.15239"></polygon>
-    <ellipse id="Oval" fill="#E05F5F" cx="97.6870748" cy="12.2366864" rx="12.1972789" ry="12.2366864"></ellipse>
-  </g>
-</svg>
+    <div class="clicker_round">  
+      <div id="clicker">
+        <svg width="162px" height="188px" viewBox="107 98 162 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+        <desc>Created with Sketch.</desc>
+        <defs></defs>
+        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(107.500000, 98.000000)">
+          <polygon id="Path-3" fill="#FF8B9E" points="0.122785296 51.631261 0.108843537 182.844646 12.7571732 179.664177 12.7571732 52.0949067"></polygon>
+          <polygon id="Path-5" fill="#FEE9BD" points="160.91349 21.1291013 160.91349 157.963954 10.660681 179.058329 9.19184275 56.2392077"></polygon>
+          <polygon id="Path-4" fill="#FF8B9E" points="0.108843537 51.5948996 160.91349 21.1354157 160.91349 33.3520046 0.39445098 64.2226946"></polygon>
+          <polygon id="Path-4" fill="#FF8B9E" points="0.388228707 96.091941 160.91349 65.2594305 160.91349 78.0859389 0.67383615 108.719736"></polygon>
+          <polygon id="Path-4" fill="#FF8B9E" points="0.0979963367 175.116254 160.91349 144.130328 160.91349 157.966127 0.0979963367 187.807117"></polygon>
+          <polygon id="Path-4" fill="#FF8B9E" points="0.388228707 136.139278 160.91349 104.95927 160.91349 118.140609 0.67383615 148.767073"></polygon>
+          <polygon id="Path-2" fill="#FFFFFF" points="0.134561344 51.5924238 85.8820942 4.44970414 160.914912 21.15239"></polygon>
+          <ellipse id="Oval" fill="#E05F5F" cx="97.6870748" cy="12.2366864" rx="12.1972789" ry="12.2366864"></ellipse>
+        </g>
+        </svg>
+      </div>
+    </div>
+
+    <br><br>
+    <a class="twitter-share-button"
+      href="https://twitter.com/intent/tweet?text=Venez%20aider%20sur%20mehmet-clicker.com/team/join%3F%0Aid=2">
+    Tweet</a>
+    <div class="level_up_bonuses">
+
+      <% @user.team.team_bonuses.each do |tb| %>
+        <div data-id="<%= tb.bonus.id %>">
+          <%= tb.bonus.name %> <br>
+          click bonus: <span class="click_bonus"><%= ('%.0f' % tb.click_bonus).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span> <br>
+          niveau: <span class="level"><%= tb.level %></span> <br>
+          <a href="#">Acheter</a> prix : <span class="price"><%= ('%.0f' % tb.price).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span>
+          <br><br>
+        </div>
+      <% end %>
+
+      <% Bonus.where.not(id: @user.team.bonuses.pluck(:id)).each do |b| %>
+        <div data-id="<%= b.id %>">
+          <%= b.name %> <br>
+          click bonus: <span class="click_bonus"><%= ('%.0f' % b.base_click_bonus).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span> <br>
+          niveau: <span class="level">1</span> <br>
+          <a href="#">Acheter</a> prix : <span class="price"><%= ('%.0f' % b.base_price).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span>
+          <br><br>
+        </div>
+      <% end %> 
+
+    </div>
+
+    <div class="level_up_auto_bonuses">
+
+      <% @user.team.team_auto_clicker_bonuses.each do |tb| %>
+        <div data-id="<%= tb.auto_clicker_bonus.id %>">
+          <%= tb.auto_clicker_bonus.name %> <br>
+          click bonus: <span class="click_bonus"><%= ('%.0f' % tb.click_bonus).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span> <br>
+          niveau: <span class="level"><%= tb.level %></span> <br>
+          <a href="#">Acheter</a> prix : <span class="price"><%= ('%.0f' % tb.price).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span>
+          <br><br>
+        </div>
+      <% end %>
+
+      <% AutoClickerBonus.where.not(id: @user.team.auto_clicker_bonuses.pluck(:id)).each do |b| %>
+        <div data-id="<%= b.id %>">
+          <%= b.name %> <br>
+          click bonus: <span class="click_bonus"><%= ('%.0f' % b.base_click_bonus).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span> <br>
+          niveau: <span class="level">1</span> <br>
+          <a href="#">Acheter</a> prix : <span class="price"><%= ('%.0f' % b.base_price).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %></span>
+          <br><br>
+        </div>
+      <% end %>  
+
+    </div>
+
+  </div>
 </div>
-<br><br>
-<div class="level_up_bonuses">
-  <% @user.team.team_bonuses.each do |tb| %>
-    <div data-id="<%= tb.bonus.id %>">
-      <%= tb.bonus.name %> <br>
-      click bonus: <span class="click_bonus"><%= '%.0f' % tb.click_bonus %></span> <br>
-      niveau: <span class="level"><%= tb.level %></span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= '%.0f' % tb.price %></span>
-      <br><br>
-    </div>
-  <% end %>
-  <% Bonus.where.not(id: @user.team.bonuses.pluck(:id)).each do |b| %>
-    <div data-id="<%= b.id %>">
-      <%= b.name %> <br>
-      click bonus: <span class="click_bonus"><%= '%.0f' % b.base_click_bonus %></span> <br>
-      niveau: <span class="level">1</span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= '%.0f' % b.base_price %></span>
-      <br><br>
-    </div>
-  <% end %> 
-</div>
-<div class="level_up_auto_bonuses">
-  <% @user.team.team_auto_clicker_bonuses.each do |tb| %>
-    <div data-id="<%= tb.auto_clicker_bonus.id %>">
-      <%= tb.auto_clicker_bonus.name %> <br>
-      click bonus: <span class="click_bonus"><%= '%.0f' % tb.click_bonus %></span> <br>
-      niveau: <span class="level"><%= tb.level %></span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= '%.0f' % tb.price %></span>
-      <br><br>
-    </div>
-  <% end %>
-  <% AutoClickerBonus.where.not(id: @user.team.auto_clicker_bonuses.pluck(:id)).each do |b| %>
-    <div data-id="<%= b.id %>">
-      <%= b.name %> <br>
-      click bonus: <span class="click_bonus"><%= '%.0f' % b.base_click_bonus %></span> <br>
-      niveau: <span class="level">1</span> <br>
-      <a href="#">Acheter</a> prix : <span class="price"><%= '%.0f' % b.base_price %></span>
-      <br><br>
-    </div>
-  <% end %>  
-</div>
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
