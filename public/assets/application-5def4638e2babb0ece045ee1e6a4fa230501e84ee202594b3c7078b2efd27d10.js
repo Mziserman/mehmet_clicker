@@ -17567,7 +17567,8 @@ $(document).ready(function() {
 
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
-      // Called when the subscription is ready for use on the server
+      $('.loader').css('display', 'none');
+      this.get_team();
     },
 
     disconnected: function() {
@@ -17575,10 +17576,19 @@ $(document).ready(function() {
     },
 
     received: function(data) {
+      console.log(data)
       if (data.score != undefined) {
-        $('.loader').css('display', 'none');
-        $('.score.' + data.team_name).html(data.score);
-        $('.team_score.' + data.team_name).html(data.score);
+        if ($('.score.' + data.team_name).html() != undefined) {
+          var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
+          var server = parseInt(data.score.replace(/\s/g, ''))
+          console.log(current)
+          console.log("_______")
+          console.log(server)
+          if (current < server) {
+            $('.score.' + data.team_name).html(data.score);
+            $('.team_score.' + data.team_name).html(data.score);
+          }
+        }
       }
       if (data.user_team_name != undefined) {
         team_name = data.user_team_name
@@ -17622,6 +17632,10 @@ $(document).ready(function() {
 
     level_up_auto: function(bonus_id) {
       return this.perform('level_up_auto', {bonus_id: bonus_id})
+    },
+
+    get_team: function() {
+      return this.perform('get_team')
     }
   });
 })
@@ -17636,6 +17650,13 @@ $(document).on('click', '#clicker', function(e) {
   str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
   str = str.substring(0, str.length - 3);
 
+  if ($('.score.' + team_name).html() != undefined) {
+      var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
+      if (current < score) {
+        $('.score.' + team_name).html(score);
+        $('.team_score.' + team_name).html(score);
+      }
+    }
   $('.team_score.' + team_name).html(str);
   $('.score').html(str);
 })
