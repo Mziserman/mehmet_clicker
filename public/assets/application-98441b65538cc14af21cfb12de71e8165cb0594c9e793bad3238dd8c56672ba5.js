@@ -17561,7 +17561,9 @@ var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationDat
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+var bonus = 0;
 $(document).ready(function() {  
+
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
       // Called when the subscription is ready for use on the server
@@ -17573,11 +17575,12 @@ $(document).ready(function() {
 
     received: function(data) {
       if (data.score != undefined) {
-        $('.loader').css('display', 'none')
-        $('.score').html(data.score)
+        $('.loader').css('display', 'none');
+        $('.score').html(data.score);
       }
       if (data.bonus) {
         bubble(data.bonus)
+        bonus = data.bonus * 1;
       }
       if (data.bonus_id != undefined) {
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
@@ -17597,10 +17600,9 @@ $(document).ready(function() {
       }
 
       if (data.completion != undefined) {
-        $('.percent_completion').html("(" + data.completion + " %)")
+        $('.percent_completion.' + data.team_name).html("(" + data.completion + " %)")
       }
       if (data.team_name != undefined) {
-        console.log(data)
         $('.indicator.' + data.team_name).css('width', data.completion + "%")
       }
     },
@@ -17621,7 +17623,16 @@ $(document).ready(function() {
 
 $(document).on('click', '#clicker', function(e) {
   e.preventDefault();
-  App.game.click()
+  App.game.click();
+  bubble(bonus);
+  var score = parseInt($('.score').html().replace(/\s/g, ''))
+
+  score += bonus;
+  str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
+  str = str.substring(0, str.length - 3);
+
+
+  $('.score').html(str);
 })
 
 $(document).on('click', '.level_up_bonuses a', function(e) {
@@ -17672,7 +17683,7 @@ function draw() {
     	// ellipse(b.x, b.y, 80, 80)
     	b.update_position()
 	   	fill(255, 255, 255, b.alpha)
-    	text("+ " + Math.floor(b.bonus), b.x, b.y + 4)
+    	text("+ " + Math.floor(b.bonus), b.x, b.y)
     }
     for (var i = 0; i < toRemove.length; i++) {
 		bubbles.splice(toRemove[i], 1)
@@ -17681,7 +17692,7 @@ function draw() {
 }
 
 function bubble(bonus) {
-	if (bubbles.length < 30) {
+	if (bubbles.length < 300) {
 		b = new Bubble(bonus)
 		b.index = bubbles.push(b)
 	}
@@ -17694,10 +17705,10 @@ Bubble.prototype.init = function(bonus) {
 	this.x = mouseX
 	this.y = mouseY
 	this.bonus = bonus
-	this.speed = Math.random(7, 10)
+	this.speed = Math.random() + 1
 	this.alpha = 350
-	this.decay = -1
-	this.angle = Math.random(0, 2*Math.PI)
+	this.decay = -Math.random() * 2 - 1
+	this.angle = random(TWO_PI)
 }
 
 Bubble.prototype.update_position = function() {
