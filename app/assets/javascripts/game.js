@@ -43,7 +43,7 @@ function draw() {
 }
 
 function bubble(bonus) {
-	if (bubbles.length < 30) {
+	if (bubbles.length < 300) {
 		b = new Bubble(bonus)
 		b.index = bubbles.push(b)
 	}
@@ -56,9 +56,9 @@ Bubble.prototype.init = function(bonus) {
 	this.x = mouseX
 	this.y = mouseY
 	this.bonus = bonus
-	this.speed = Math.random(7, 10)
+	this.speed = Math.random() + 1
 	this.alpha = 350
-	this.decay = -1
+	this.decay = -Math.random() * 2 - 1
 	this.angle = random(TWO_PI)
 }
 

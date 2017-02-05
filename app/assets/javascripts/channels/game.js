@@ -1,4 +1,5 @@
 $(document).ready(function() {  
+  bonus = 0;
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
       // Called when the subscription is ready for use on the server
@@ -15,6 +16,7 @@ $(document).ready(function() {
       }
       if (data.bonus) {
         bubble(data.bonus)
+        bonus = data.bonus;
       }
       if (data.bonus_id != undefined) {
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
@@ -58,6 +60,7 @@ $(document).ready(function() {
 $(document).on('click', '#clicker', function(e) {
   e.preventDefault();
   App.game.click()
+  bubble(data.bonus)
 })
 
 $(document).on('click', '.level_up_bonuses a', function(e) {
