@@ -11089,8 +11089,9 @@ html, body {
   padding: 0;
   height: 100%;
   background-color: #1F1F1F;
+  color: white;
 }
-/* line 9, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 10, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .loader, body .loader {
   position: fixed;
   display: block;
@@ -11103,18 +11104,18 @@ html .loader, body .loader {
   text-align: center;
   color: white;
 }
-/* line 20, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 21, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .loader p, body .loader p {
   margin-top: 200px;
   font-size: 2em;
 }
-/* line 24, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 25, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .loader .spinner, body .loader .spinner {
   margin: 100px auto 0;
   width: 70px;
   text-align: center;
 }
-/* line 28, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 29, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .loader .spinner > div, body .loader .spinner > div {
   width: 18px;
   height: 18px;
@@ -11124,19 +11125,19 @@ html .loader .spinner > div, body .loader .spinner > div {
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
-/* line 38, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 39, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .loader .spinner .bounce1, body .loader .spinner .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
-/* line 42, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 43, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .loader .spinner .bounce2, body .loader .spinner .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
-/* line 48, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 49, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .defaultCanvas0, body .defaultCanvas0 {
-  position: fixed;
+  position: absolute;
   display: block;
   bottom: 0;
   right: 0;
@@ -11146,19 +11147,31 @@ html .defaultCanvas0, body .defaultCanvas0 {
   pointer-events: none;
 }
 /* line 59, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game, body .game {
+  display: inline-block;
+  width: 70%;
+}
+/* line 62, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .score_title, body .game .score_title {
   text-align: center;
   color: #535353;
   font-size: 1em;
   margin-bottom: 0;
 }
-/* line 65, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
-html .game .score, body .game .score {
+/* line 68, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game .score_container, body .game .score_container {
   text-align: center;
+}
+/* line 70, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game .score_container .score, body .game .score_container .score {
   color: white;
   font-size: 2em;
 }
-/* line 70, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 74, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game .score_container .percent_completion, body .game .score_container .percent_completion {
+  color: #FEE9BD;
+}
+/* line 79, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .clicker_round, body .game .clicker_round {
   width: 350px;
   height: 350px;
@@ -11166,7 +11179,7 @@ html .game .clicker_round, body .game .clicker_round {
   border: 1px solid #2B2B2B;
   border-radius: 50%;
 }
-/* line 76, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 85, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .clicker_round #clicker, body .game .clicker_round #clicker {
   width: 162px;
   margin: 0 auto;
@@ -11175,40 +11188,50 @@ html .game .clicker_round #clicker, body .game .clicker_round #clicker {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-/* line 84, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
-html .game .twitter-share-button, body .game .twitter-share-button {
-  position: relative;
-  height: 20px;
-  box-sizing: border-box;
-  padding: 1px 8px 1px 6px;
-  background-color: #1b95e0;
-  color: #fff;
-  border-radius: 3px;
-  font-weight: 500;
-  cursor: pointer;
+/* line 93, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game .invitation, body .game .invitation {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
 }
-
-/* line 102, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
-.spinner > div {
-  width: 18px;
-  height: 18px;
-  background-color: #333;
-  border-radius: 100%;
+/* line 99, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game .invitation p.union, body .game .invitation p.union {
+  color: #535353;
+  margin: 0;
+}
+/* line 109, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard, body .leaderboard {
+  width: 30%;
+  height: 100%;
+  border-left: 1px solid #2B2B2B;
   display: inline-block;
-  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  position: absolute;
+  right: 0px;
 }
-
-/* line 113, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
-.spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+/* line 116, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard p, body .leaderboard p {
+  text-align: center;
 }
-
-/* line 118, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
-.spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+/* line 119, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard .leaderboard_container, body .leaderboard .leaderboard_container {
+  margin-top: 300px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+/* line 122, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard .leaderboard_container .team_name, body .leaderboard .leaderboard_container .team_name {
+  margin-bottom: 5px;
+}
+/* line 125, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard .leaderboard_container .jauge, body .leaderboard .leaderboard_container .jauge {
+  width: 1000px;
+  height: 5px;
+  background-color: #2B2B2B;
+  margin-bottom: 5px;
+}
+/* line 130, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard .leaderboard_container .jauge .indicator, body .leaderboard .leaderboard_container .jauge .indicator {
+  height: 5px;
 }
 
 @-webkit-keyframes sk-bouncedelay {
@@ -11228,4 +11251,47 @@ html .game .twitter-share-button, body .game .twitter-share-button {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
+}
+/* line 4, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home {
+  color: white;
+}
+/* line 6, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home .anouncer {
+  width: 171px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 75px;
+}
+/* line 10, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home .anouncer p {
+  letter-spacing: 9px;
+  padding-left: 9px;
+}
+/* line 16, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home .presentation {
+  width: 100%;
+  margin-bottom: 75px;
+  text-align: center;
+}
+/* line 21, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home .team_name {
+  margin-bottom: 5px;
+}
+/* line 24, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home .jauge {
+  width: 100%;
+  height: 5px;
+  background-color: #2B2B2B;
+  margin-bottom: 5px;
+}
+/* line 29, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home .jauge .indicator {
+  height: 5px;
+}
+/* line 33, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.home a.join_team {
+  margin-bottom: 15px;
+  position: absolute;
+  right: 0;
 }
