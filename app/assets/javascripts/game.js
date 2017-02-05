@@ -43,8 +43,10 @@ function draw() {
 }
 
 function bubble(bonus) {
-	b = new Bubble(bonus)
-	b.index = bubbles.push(b)
+	if (bubbles.length < 30) {
+		b = new Bubble(bonus)
+		b.index = bubbles.push(b)
+	}
 }
 
 Bubble = function(bonus) {

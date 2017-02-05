@@ -17572,10 +17572,11 @@ $(document).ready(function() {
     },
 
     received: function(data) {
-      console.log(data)
       if (data.score != undefined) {
         $('.loader').css('display', 'none')
         $('.score').html(data.score)
+      }
+      if (data.bonus) {
         bubble(data.bonus)
       }
       if (data.bonus_id != undefined) {
@@ -17593,6 +17594,10 @@ $(document).ready(function() {
           .find('span.price').html(data.price)
         $('.level_up_auto_bonuses div[data-id="' + data.auto_clicker_bonus_id + '"]')
           .find('span.click_bonus').html(data.click_bonus)
+      }
+
+      if (data.completion != undefined) {
+        $('.percent_completion').html("(" + data.completion + " %)")
       }
     },
 
@@ -17631,6 +17636,7 @@ $(document).on('click', '.level_up_auto_bonuses a', function(e) {
 // All this logic will automatically be available in application.js.
 var mouseX, mouseY;
 var bubbles = [];
+var toRemove = [];
 $(document).mousemove(function(e) {
     mouseX = e.pageX;
     mouseY = e.pageY;
@@ -17648,27 +17654,33 @@ function setup() {
     textAlign(CENTER)
     textSize(16);
     colorMode('RGBA')
-    noStroke()
 }
 
 function draw() {
 	clear()
-    for (i = 0; i < bubbles.length; i++) {
+    for (var i = 0; i < bubbles.length; i++) {
     	b = bubbles[i]
     	if (b.alpha <= 0) {
-			bubbles.splice(i, 1)
+    		toRemove.push(i)
 		}
-    	fill(200, 0, 0, b.alpha)
-    	ellipse(b.x, b.y, 80, 80)
+    	// fill(255, 59, 158, b.alpha)
+    	// stroke(255, 59, 158, b.alpha + 30)
+    	// ellipse(b.x, b.y, 80, 80)
     	b.update_position()
-	   	fill(0, 0, 0, b.alpha)
-    	text("+ " + Math.floor(b.bonus), b.x, b.y)
+	   	fill(255, 255, 255, b.alpha)
+    	text("+ " + Math.floor(b.bonus), b.x, b.y + 4)
     }
+    for (var i = 0; i < toRemove.length; i++) {
+		bubbles.splice(toRemove[i], 1)
+    }
+    toRemove = [];
 }
 
 function bubble(bonus) {
-	b = new Bubble(bonus)
-	b.index = bubbles.push(b)
+	if (bubbles.length < 30) {
+		b = new Bubble(bonus)
+		b.index = bubbles.push(b)
+	}
 }
 
 Bubble = function(bonus) {
@@ -17678,17 +17690,15 @@ Bubble.prototype.init = function(bonus) {
 	this.x = mouseX
 	this.y = mouseY
 	this.bonus = bonus
-	this.right_strength = Math.random(10)
-	this.left_strength = Math.random(10)
-	this.x_speed = Math.random(5)
-	this.y_speed = Math.random(6)
-	this.alpha = 150
+	this.speed = Math.random(7, 10)
+	this.alpha = 350
 	this.decay = -1
+	this.angle = Math.random(0, 2*Math.PI)
 }
 
 Bubble.prototype.update_position = function() {
-	this.x -= this.x_speed
-	this.y += (this.right_strength - this.left_strength) * this.y_speed
+	this.x += cos(this.angle) * this.speed
+	this.y += sin(this.angle) * this.speed
 	this.alpha += this.decay
 }
 ;
