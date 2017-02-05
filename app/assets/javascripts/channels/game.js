@@ -14,8 +14,13 @@ $(document).ready(function() {
     received: function(data) {
       if (data.score != undefined) {
         $('.loader').css('display', 'none');
-        $('.score.' + data.team_name).html(data.score);
-        $('.team_score.' + data.team_name).html(data.score);
+        if ($('.score.' + data.team_name).html() != undefined) {
+          var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
+          if (current < data.score) {
+            $('.score.' + data.team_name).html(data.score);
+            $('.team_score.' + data.team_name).html(data.score);
+          }
+        }
       }
       if (data.user_team_name != undefined) {
         team_name = data.user_team_name
