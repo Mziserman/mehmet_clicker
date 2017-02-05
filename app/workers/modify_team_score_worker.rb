@@ -22,6 +22,8 @@ class ModifyTeamScoreWorker
       ActionCable.server.broadcast(channel, completion: rounded_percent_completion,
         team_name: t.name)
     end
+    ActionCable.server.broadcast("team_", completion: rounded_percent_completion,
+        team_name: t.name)
   end
 
   def render_number(number)

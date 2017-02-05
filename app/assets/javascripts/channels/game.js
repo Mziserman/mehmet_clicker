@@ -34,7 +34,7 @@ $(document).ready(function() {
       }
 
       if (data.completion != undefined) {
-        $('.percent_completion').html("(" + data.completion + " %)")
+        $('.percent_completion.' + data.team_name).html("(" + data.completion + " %)")
       }
       if (data.team_name != undefined) {
         console.log(data)

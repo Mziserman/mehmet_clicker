@@ -29,7 +29,8 @@
       <div class="row">
         <div class="jauge">
           <% percent_completion = ((team.score / team.goal.score).to_f < 1 ? (team.score / team.goal.score).to_f * 100 : 100) %>
-          <div class="indicator" 
+
+          <div class="indicator <%= team.name %>" 
             style="width: <%= percent_completion %>% ; background-color: <%= team.color %>"></div>
         </div>
       </div>
