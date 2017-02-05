@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
-      // Called when the subscription is ready for use on the server
+      get_team()
     },
 
     disconnected: function() {
@@ -59,6 +59,10 @@ $(document).ready(function() {
 
     level_up_auto: function(bonus_id) {
       return this.perform('level_up_auto', {bonus_id: bonus_id})
+    },
+
+    get_team: function() {
+      return this.perform('get_team')
     }
   });
 })

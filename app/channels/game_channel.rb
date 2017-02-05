@@ -14,6 +14,12 @@ class GameChannel < ApplicationCable::Channel
     ModifyTeamScoreWorker.new.perform(team.id, team.click_bonus)
   end
 
+  def get_team(data)
+    template = 'team_%s'
+    channel = template % [current_user.team_id]
+    ActionCable.server.broadcast(channel, user_team_name: current_user.team_name)
+  end
+
   def level_up(data)
     template = 'team_%s'
     channel = template % [current_user.team_id]

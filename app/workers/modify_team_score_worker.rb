@@ -15,7 +15,7 @@ class ModifyTeamScoreWorker
 
     ActionCable.server.broadcast(channel, score: render_number(t.score),
       bonus: 1 + increment, completion: rounded_percent_completion,
-      team_name: t.name, user_team_name: current_user.team_name)
+      team_name: t.name)
     Team.find_each do |team|
       template = 'team_%s'
       channel = template % [team.id]
