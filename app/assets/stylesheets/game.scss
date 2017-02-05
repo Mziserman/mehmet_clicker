@@ -46,7 +46,7 @@ html, body {
 		}
 	}
 	.defaultCanvas0 {
-	    position: fixed;
+	    position: absolute;
 	    display: block;
 		bottom: 0;
 		right: 0;
@@ -81,43 +81,7 @@ html, body {
 				transform: translateY(-50%);
 			}
 		}
-		.twitter-share-button {
-			position: relative;
-		    height: 20px;
-		    box-sizing: border-box;
-		    padding: 1px 8px 1px 6px;
-		    background-color: #1b95e0;
-		    color: #fff;
-		    border-radius: 3px;
-		    font-weight: 500;
-		    cursor: pointer;
-		}
 	}
-}
-
-.spinner {
-  
-}
-
-.spinner > div {
-  width: 18px;
-  height: 18px;
-  background-color: #333;
-
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-}
-
-.spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-
-.spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
 }
 
 @-webkit-keyframes sk-bouncedelay {
