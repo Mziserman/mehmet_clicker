@@ -114,7 +114,9 @@
       <% @teams.each do |team| %>
         <div class="row">
           <p class="team_name"><%= team.name.upcase %></p>
-          <p class="team_score <%= team.name %>"><%= team.score %></p>
+          <% score = ('%.0f' % team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %>
+
+          <p class="team_score <%= team.name %>"><%= score %></p>
         </div>
         <div class="row">
           <div class="jauge">
