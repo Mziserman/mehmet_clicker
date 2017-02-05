@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
-      get_team()
+      this.get_team()
     },
 
     disconnected: function() {
