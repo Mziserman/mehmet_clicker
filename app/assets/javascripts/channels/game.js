@@ -18,9 +18,6 @@ $(document).ready(function() {
         if ($('.score.' + data.team_name).html() != undefined) {
           var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
           var server = parseInt(data.score.replace(/\s/g, ''))
-          console.log(current)
-          console.log("_______")
-          console.log(server)
           if (current < server) {
             $('.score.' + data.team_name).html(data.score);
             $('.team_score.' + data.team_name).html(data.score);
