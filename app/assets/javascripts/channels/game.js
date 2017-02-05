@@ -1,4 +1,5 @@
 var bonus = 0;
+var team_name = ""
 $(document).ready(function() {  
 
   App.game = App.cable.subscriptions.create("GameChannel", {
@@ -12,6 +13,7 @@ $(document).ready(function() {
 
     received: function(data) {
       if (data.score != undefined) {
+        team_name = data.team_name;
         $('.loader').css('display', 'none');
         $('.score.' + data.team_name).html(data.score);
         $('.team_score.' + data.team_name).html(data.score);
@@ -69,7 +71,7 @@ $(document).on('click', '#clicker', function(e) {
   str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
   str = str.substring(0, str.length - 3);
 
-
+  $('.team_score.' + team_name).html(str);
   $('.score').html(str);
 })
 
