@@ -20,10 +20,10 @@ class ModifyTeamScoreWorker
       template = 'team_%s'
       channel = template % [team.id]
       ActionCable.server.broadcast(channel, completion: rounded_percent_completion,
-        team_name: t.name)
+        score: render_number(t.score), team_name: t.name)
     end
     ActionCable.server.broadcast("team_", completion: rounded_percent_completion,
-        team_name: t.name)
+      score: render_number(t.score), team_name: t.name)
   end
 
   def render_number(number)

@@ -114,6 +114,7 @@
       <% @teams.each do |team| %>
         <div class="row">
           <p class="team_name"><%= team.name.upcase %></p>
+          <p class="team_score <%= team.name %>"><%= team.score %></p>
         </div>
         <div class="row">
           <div class="jauge">

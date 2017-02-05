@@ -14,6 +14,7 @@ $(document).ready(function() {
       if (data.score != undefined) {
         $('.loader').css('display', 'none');
         $('.score').html(data.score);
+        $('.team_score.' + data.team_name).html(data.score);
       }
       if (data.bonus) {
         bubble(data.bonus)
