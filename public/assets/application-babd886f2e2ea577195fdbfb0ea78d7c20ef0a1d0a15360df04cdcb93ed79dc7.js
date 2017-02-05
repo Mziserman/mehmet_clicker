@@ -17562,6 +17562,7 @@ var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationDat
 
 }).call(this);
 var bonus = 0;
+var team_name = "a"
 $(document).ready(function() {  
 
   App.game = App.cable.subscriptions.create("GameChannel", {
@@ -17576,9 +17577,13 @@ $(document).ready(function() {
     received: function(data) {
       if (data.score != undefined) {
         $('.loader').css('display', 'none');
-        $('.score').html(data.score);
+        $('.score.' + data.team_name).html(data.score);
+        $('.team_score.' + data.team_name).html(data.score);
       }
-      if (data.bonus) {
+      if (data.user_team_name != undefined) {
+        team_name = data.user_team_name
+      }
+      if (data.bonus != undefined) {
         bubble(data.bonus)
         bonus = data.bonus * 1;
       }
@@ -17631,7 +17636,7 @@ $(document).on('click', '#clicker', function(e) {
   str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
   str = str.substring(0, str.length - 3);
 
-
+  $('.team_score.' + team_name).html(str);
   $('.score').html(str);
 })
 

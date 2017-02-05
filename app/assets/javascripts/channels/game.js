@@ -1,5 +1,5 @@
 var bonus = 0;
-var team_name = ""
+var team_name = "a"
 $(document).ready(function() {  
 
   App.game = App.cable.subscriptions.create("GameChannel", {
