@@ -21,7 +21,6 @@ $(document).ready(function() {
         team_name = data.user_team_name
       }
       if (data.bonus != undefined) {
-        team_name = data.team_name;
         bubble(data.bonus)
         bonus = data.bonus * 1;
       }
