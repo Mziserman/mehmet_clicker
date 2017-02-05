@@ -60,7 +60,6 @@ Bubble.prototype.init = function(bonus) {
 	this.alpha = 350
 	this.decay = -1
 	this.angle = random(TWO_PI)
-	console.log(this.angle)
 }
 
 Bubble.prototype.update_position = function() {

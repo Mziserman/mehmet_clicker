@@ -37,7 +37,6 @@ $(document).ready(function() {
         $('.percent_completion.' + data.team_name).html("(" + data.completion + " %)")
       }
       if (data.team_name != undefined) {
-        console.log(data)
         $('.indicator.' + data.team_name).css('width', data.completion + "%")
       }
     },
