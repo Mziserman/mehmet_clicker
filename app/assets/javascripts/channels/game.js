@@ -35,6 +35,7 @@ $(document).ready(function() {
 
       if (data.completion != undefined) {
         $('.percent_completion').html("(" + data.completion + " %)")
+        $('.indicator').css('width', data.completion + "%")
       }
     },
 

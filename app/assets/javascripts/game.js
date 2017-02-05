@@ -11,7 +11,7 @@ $(document).mousemove(function(e) {
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
-    $('#defaultCanvas0').css({'position': 'fixed', 'bottom': 0,
+    $('#defaultCanvas0').css({'position': 'absolute', 'bottom': 0,
 		'right': 0,
 		'left': 0,
 		'top': 0,
