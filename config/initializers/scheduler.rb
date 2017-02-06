@@ -3,5 +3,5 @@ require 'rufus-scheduler'
 s = Rufus::Scheduler.singleton
 
 s.every '2s' do
-  AutoClickerBonusWorker.new.perform
+  # AutoClickerBonusWorker.new.perform
 end
