@@ -15,14 +15,8 @@ $(document).ready(function() {
     received: function(data) {
       console.log(data)
       if (data.score != undefined) {
-        if ($('.score.' + data.team_name).html() != undefined) {
-          var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
-          var server = parseInt(data.score.replace(/\s/g, ''))
-          if (current < server) {
-            $('.score.' + data.team_name).html(data.score);
-            $('.team_score.' + data.team_name).html(data.score);
-          }
-        }
+        $('.score.' + data.team_name).html(data.score);
+        $('.team_score.' + data.team_name).html(data.score);
       }
       if (data.user_team_name != undefined) {
         team_name = data.user_team_name
@@ -70,39 +64,10 @@ $(document).ready(function() {
 
     get_team: function() {
       return this.perform('get_team')
+    },
+
+    update_server_score: function(click_count) {
+      return this.perform('update_score', {click_count: click_count})
     }
   });
-})
-
-$(document).on('click', '#clicker', function(e) {
-  e.preventDefault();
-  App.game.click();
-  bubble(bonus);
-  var score = parseInt($('.score').html().replace(/\s/g, ''))
-
-  score += bonus;
-  str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
-  str = str.substring(0, str.length - 3);
-
-  if ($('.score.' + team_name).html() != undefined) {
-      var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
-      if (current < score) {
-        $('.score.' + team_name).html(score);
-        $('.team_score.' + team_name).html(score);
-      }
-    }
-  $('.team_score.' + team_name).html(str);
-  $('.score').html(str);
-})
-
-$(document).on('click', '.level_up_bonuses a', function(e) {
-  bonus_id = $(e.target).parents('div').data("id")
-  App.game.level_up(bonus_id)
-  e.preventDefault()
-})
-
-$(document).on('click', '.level_up_auto_bonuses a', function(e) {
-  bonus_id = $(e.target).parents('div').data("id")
-  App.game.level_up_auto(bonus_id)
-  e.preventDefault()
 })

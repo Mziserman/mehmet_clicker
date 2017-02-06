@@ -1,0 +1,5 @@
+
+<p class="score_container">
+  <span class="score <%= @team.name %>"><%= render "number", number: @team.score %></span>
+  <span class="percent_completion <%= @team.name %>">(<%= render "percent", score: @team.score, goal: @team.goal.score %> %)</span>
+</p>

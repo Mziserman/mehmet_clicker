@@ -62,8 +62,8 @@ class GameChannel < ApplicationCable::Channel
     channel = template % [current_user.team_id]
     t = Team.find(current_user.team_id)
 
-    percent_completion = ((t.score / Goal.first.score)
-      .to_f < 1 ? (t.score / Goal.first.score).to_f * 100 : 100)
+    percent_completion = ((t.score / t.goal.score)
+      .to_f < 1 ? (t.score / t.goal.score).to_f * 100 : 100)
     rounded_percent_completion = ('%.2f' % percent_completion).to_s.reverse
       .gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
 

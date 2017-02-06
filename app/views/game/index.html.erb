@@ -24,10 +24,7 @@
       </svg>
     </div>
     <p class="score_title">VOTRE SCORE</p>
-    <% percent_completion = ((@user.team.score / @user.team.goal.score).to_f < 1 ? (@user.team.score / @user.team.goal.score).to_f * 100 : 100)
-      rounded_percent_completion = ('%.2f' % percent_completion).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
-      score = ('%.0f' % @user.team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse %>
-    <p class="score_container"><span class="score <%= @user.team.name %>"><%= score %></span> <span class="percent_completion <%= @user.team.name %>">(<%= rounded_percent_completion %> %)</span></p>  
+    <%= render "score", object: @user.team %>
 
     <div class="clicker_round">  
       <div id="clicker">
@@ -50,6 +47,7 @@
     </div>
 
     <br><br>
+
     <div class="invitation">
       <p class="union">L'UNION FAIT LA FORCE</p>
       <p class="cta">Invite tes amis à aider ton clan</p>
@@ -60,6 +58,7 @@
         data-size="large">
       Tweet</a>
     </div>
+
     <div class="level_up_bonuses">
       <% @user.team.team_bonuses.each do |tb| %>
         <div data-id="<%= tb.bonus.id %>">
@@ -80,7 +79,6 @@
           <br><br>
         </div>
       <% end %> 
-
     </div>
 
     <div class="level_up_auto_bonuses">
@@ -104,27 +102,29 @@
           <br><br>
         </div>
       <% end %>  
-
     </div>
 
   </div>
   <div class="leaderboard">
+
     <p>LEADERBOARD</p>
     <div class="leaderboard_container">
       <% @teams.each do |team| %>
         <div class="row">
           <p class="team_name"><%= team.name.upcase %></p>
-          <p class="team_score <%= team.name %>"><%= ('%.0f' % team.score).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse  %></p>
+          <p class="team_score <%= team.name %>">
+            <%= render "number", number: team.score %>
+          </p>
         </div>
         <div class="row">
           <div class="jauge">
             <% percent_completion = ((team.score / team.goal.score).to_f < 1 ? (team.score / team.goal.score).to_f * 100 : 100) %>
             <div class="indicator <%= team.name %>" 
-              style="width: <%= percent_completion %>% ; background-color: <%= team.color %>"></div>
+              style="width: <%= render "percent", score: team.score, goal: team.goal.score %>% ; background-color: <%= team.color %>"></div>
           </div>
         </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
   </div>
 </div>
