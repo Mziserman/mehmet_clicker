@@ -1,6 +1,7 @@
 class AutoClickerBonusWorker
   include Sidekiq::Worker
 
+
   def perform(*args)
     Team.find_each do |t|
       score_bonus = 0

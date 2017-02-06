@@ -15,15 +15,24 @@ $(document).ready(function() {
     received: function(data) {
       console.log(data)
       if (data.score != undefined) {
-        $('.score.' + data.team_name).html(data.score);
-        $('.team_score.' + data.team_name).html(data.score);
+        if ($('.score.' + data.team_name).html() != undefined) {
+          var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
+          var server = parseInt(data.score.replace(/\s/g, ''))
+          console.log(current)
+          console.log(server)
+          if (current < server) {
+
+            $('.score.' + data.team_name).html(data.score);
+            $('.team_score.' + data.team_name).html(data.score);
+            if (data.bonus != undefined) {
+              bubble(data.bonus)
+              bonus = data.bonus * 1;
+            }
+          }
+        }
       }
       if (data.user_team_name != undefined) {
         team_name = data.user_team_name
-      }
-      if (data.bonus != undefined) {
-        bubble(data.bonus)
-        bonus = data.bonus * 1;
       }
       if (data.bonus_id != undefined) {
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
@@ -32,6 +41,10 @@ $(document).ready(function() {
           .find('span.price').html(data.price)
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
           .find('span.click_bonus').html(data.click_bonus)
+
+        if (data.score != undefined) {
+          $('.score.' + data.team_name).html(data.score);
+        }
       }
       if (data.auto_clicker_bonus_id != undefined) {
         $('.level_up_auto_bonuses div[data-id="' + data.auto_clicker_bonus_id + '"]')
@@ -40,6 +53,10 @@ $(document).ready(function() {
           .find('span.price').html(data.price)
         $('.level_up_auto_bonuses div[data-id="' + data.auto_clicker_bonus_id + '"]')
           .find('span.click_bonus').html(data.click_bonus)
+
+        if ($('.score.' + data.team_name).html() != undefined) {
+          $('.team_score.' + data.team_name).html(data.score);
+        }
       }
 
       if (data.completion != undefined) {
