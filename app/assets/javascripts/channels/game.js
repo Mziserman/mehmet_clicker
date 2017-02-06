@@ -21,7 +21,6 @@ $(document).ready(function() {
           console.log(current)
           console.log(server)
           if (current < server) {
-
             $('.score.' + data.team_name).html(data.score);
             $('.team_score.' + data.team_name).html(data.score);
             if (data.bonus != undefined) {
