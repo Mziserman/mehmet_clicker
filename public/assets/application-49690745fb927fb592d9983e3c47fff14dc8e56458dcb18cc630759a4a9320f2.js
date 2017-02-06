@@ -17567,7 +17567,8 @@ $(document).ready(function() {
 
   App.game = App.cable.subscriptions.create("GameChannel", {
     connected: function() {
-      this.get_team()
+      $('.loader').css('display', 'none');
+      this.get_team();
     },
 
     disconnected: function() {
@@ -17575,11 +17576,12 @@ $(document).ready(function() {
     },
 
     received: function(data) {
+      console.log(data)
       if (data.score != undefined) {
-        $('.loader').css('display', 'none');
         if ($('.score.' + data.team_name).html() != undefined) {
           var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
-          if (current < data.score) {
+          var server = parseInt(data.score.replace(/\s/g, ''))
+          if (current < server) {
             $('.score.' + data.team_name).html(data.score);
             $('.team_score.' + data.team_name).html(data.score);
           }
@@ -17645,6 +17647,13 @@ $(document).on('click', '#clicker', function(e) {
   str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
   str = str.substring(0, str.length - 3);
 
+  if ($('.score.' + team_name).html() != undefined) {
+      var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
+      if (current < score) {
+        $('.score.' + team_name).html(score);
+        $('.team_score.' + team_name).html(score);
+      }
+    }
   $('.team_score.' + team_name).html(str);
   $('.score').html(str);
 })
@@ -17666,6 +17675,8 @@ $(document).on('click', '.level_up_auto_bonuses a', function(e) {
 var mouseX, mouseY;
 var bubbles = [];
 var toRemove = [];
+
+
 $(document).mousemove(function(e) {
     mouseX = e.pageX;
     mouseY = e.pageY;
@@ -17673,6 +17684,11 @@ $(document).mousemove(function(e) {
 
 
 function setup() {
+	console.log('oui')
+	console.log('oui')
+	console.log('oui')
+	console.log('oui')
+	console.log('oui')
     createCanvas(window.innerWidth, window.innerHeight);
     $('#defaultCanvas0').css({'position': 'absolute', 'bottom': 0,
 		'right': 0,
@@ -17706,6 +17722,9 @@ function draw() {
 }
 
 function bubble(bonus) {
+	if ($('#defaultCanvas0').length == 0) {
+		setup()
+	}
 	if (bubbles.length < 300) {
 		b = new Bubble(bonus)
 		b.index = bubbles.push(b)

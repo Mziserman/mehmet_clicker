@@ -3,6 +3,8 @@
 var mouseX, mouseY;
 var bubbles = [];
 var toRemove = [];
+
+
 $(document).mousemove(function(e) {
     mouseX = e.pageX;
     mouseY = e.pageY;
@@ -10,6 +12,11 @@ $(document).mousemove(function(e) {
 
 
 function setup() {
+	console.log('oui')
+	console.log('oui')
+	console.log('oui')
+	console.log('oui')
+	console.log('oui')
     createCanvas(window.innerWidth, window.innerHeight);
     $('#defaultCanvas0').css({'position': 'absolute', 'bottom': 0,
 		'right': 0,
@@ -43,6 +50,9 @@ function draw() {
 }
 
 function bubble(bonus) {
+	if ($('#defaultCanvas0').length == 0) {
+		setup()
+	}
 	if (bubbles.length < 300) {
 		b = new Bubble(bonus)
 		b.index = bubbles.push(b)
