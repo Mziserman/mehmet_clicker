@@ -1,5 +1,14 @@
 class HomeController < ApplicationController
   def index
+  end
+
+  def trailer
+  end
+
+  def synopsis
+  end
+
+  def game
     if current_user.blank?
       if cookies.signed[:user_id].blank?
         iu = InvitedUser.create
@@ -16,6 +25,9 @@ class HomeController < ApplicationController
     @goals = Goal.all
   end
 
-  def landing
+  def gallery
+  end
+
+  def team
   end
 end
