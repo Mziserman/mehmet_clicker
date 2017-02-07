@@ -11167,7 +11167,11 @@ html .game .score_container .score, body .game .score_container .score {
   color: white;
   font-size: 2em;
 }
-/* line 76, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 74, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .game .score_container .percent_completion, body .game .score_container .percent_completion {
+  color: #FEE9BD;
+}
+/* line 79, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .clicker_round, body .game .clicker_round {
   width: 350px;
   height: 350px;
@@ -11175,7 +11179,7 @@ html .game .clicker_round, body .game .clicker_round {
   border: 1px solid #2B2B2B;
   border-radius: 50%;
 }
-/* line 82, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 85, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .clicker_round #clicker, body .game .clicker_round #clicker {
   width: 162px;
   margin: 0 auto;
@@ -11184,18 +11188,18 @@ html .game .clicker_round #clicker, body .game .clicker_round #clicker {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-/* line 90, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 93, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .invitation, body .game .invitation {
   width: 300px;
   margin: 0 auto;
   text-align: center;
 }
-/* line 96, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 99, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .game .invitation p.union, body .game .invitation p.union {
   color: #535353;
   margin: 0;
 }
-/* line 106, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 109, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .leaderboard, body .leaderboard {
   width: 30%;
   height: 100%;
@@ -11204,28 +11208,33 @@ html .leaderboard, body .leaderboard {
   position: absolute;
   right: 0px;
 }
-/* line 113, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 116, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .leaderboard p, body .leaderboard p {
   text-align: center;
 }
-/* line 116, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 119, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .leaderboard .leaderboard_container, body .leaderboard .leaderboard_container {
   margin-top: 300px;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
-/* line 119, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 122, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .leaderboard .leaderboard_container .team_name, body .leaderboard .leaderboard_container .team_name {
   margin-bottom: 5px;
 }
-/* line 122, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 125, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+html .leaderboard .leaderboard_container .team_score, body .leaderboard .leaderboard_container .team_score {
+  position: absolute;
+  right: 0;
+}
+/* line 129, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .leaderboard .leaderboard_container .jauge, body .leaderboard .leaderboard_container .jauge {
   width: 1000px;
   height: 5px;
   background-color: #2B2B2B;
   margin-bottom: 5px;
 }
-/* line 127, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
+/* line 134, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/game.scss */
 html .leaderboard .leaderboard_container .jauge .indicator, body .leaderboard .leaderboard_container .jauge .indicator {
   height: 5px;
 }
@@ -11248,45 +11257,126 @@ html .leaderboard .leaderboard_container .jauge .indicator, body .leaderboard .l
     transform: scale(1);
   }
 }
-/* line 4, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home {
+/* font */
+@font-face {
+  font-family: "Avenir-Heavy";
+  src: url("AvenirLTStd-Heavy.eot?#iefix") format("embedded-opentype"), url("AvenirLTStd-Heavy.otf") format("opentype"), url("AvenirLTStd-Heavy.woff") format("woff"), url("AvenirLTStd-Heavy.ttf") format("truetype"), url("AvenirLTStd-Heavy.svg#AvenirLTStd-Heavy") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* content */
+/* line 14, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Avenir-Heavy";
+  color: #F26D61;
+  overflow: hidden;
+  position: relative;
+  border: 25px solid #fff;
+  box-sizing: border-box;
+}
+/* line 28, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .container {
+  position: relative;
+  width: calc(100vw - 50px);
+  height: calc(100vh - 50px);
+  background-image: url("/assets/background-0114f8240d282f87a46533186124fd930123cab2b5aaa067f0538a906bb554a1.png");
+  background-size: cover;
+  background-position: center bottom;
+}
+/* line 40, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .content {
+  position: absolute;
+  margin-top: 120px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+/* line 47, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .content__title {
+  display: block;
+  margin: auto;
+}
+/* line 52, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .content__date {
+  text-align: center;
+  margin-top: 45px;
+}
+/* line 57, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .content__socials {
+  margin-top: 95px;
+  text-align: center;
+}
+/* line 62, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .social {
+  display: inline-block;
+}
+/* line 66, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .social:first-child {
+  margin-right: 100px;
+}
+/* line 70, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .social a {
+  text-decoration: none;
+  color: inherit;
+}
+/* line 75, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .social a img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+@media screen and (max-width: 846px) {
+  /* line 83, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+  .landing .social {
+    display: block;
+  }
+  /* line 86, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+  .landing .social:first-child {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+/* line 92, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home {
   color: white;
 }
-/* line 6, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home .anouncer {
+/* line 94, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home .anouncer {
   width: 171px;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 75px;
 }
-/* line 10, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home .anouncer p {
+/* line 98, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home .anouncer p {
   letter-spacing: 9px;
   padding-left: 9px;
 }
-/* line 16, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home .presentation {
+/* line 104, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home .presentation {
   width: 100%;
   margin-bottom: 75px;
   text-align: center;
 }
-/* line 21, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home .team_name {
+/* line 109, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home .team_name {
   margin-bottom: 5px;
 }
-/* line 24, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home .jauge {
+/* line 112, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home .jauge {
   width: 100%;
   height: 5px;
   background-color: #2B2B2B;
   margin-bottom: 5px;
 }
-/* line 29, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home .jauge .indicator {
+/* line 117, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home .jauge .indicator {
   height: 5px;
 }
-/* line 33, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
-.home a.join_team {
+/* line 121, /Users/ziserman/work/h4/rails/mehmet_clicker/app/assets/stylesheets/home.scss */
+.landing .home a.join_team {
   margin-bottom: 15px;
   position: absolute;
   right: 0;
