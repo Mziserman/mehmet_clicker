@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
   end
 
-  def trailer
+  def teaser
   end
 
   def synopsis

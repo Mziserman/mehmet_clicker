@@ -17,7 +17,7 @@ $blue: rgb(31, 34, 45);
 $grey: rgb(134, 134, 134);
 $light-orange: rgb(255, 188, 116);
 $dark-orange: rgb(255, 128, 128);
-$darker-orange: darken($dark-orange, 45%);
+$darker-orange: rgb(226, 92, 91);
 $orange-gradient: linear-gradient(45deg, $light-orange, $dark-orange);
 
 $light-black: #2B2B2B;

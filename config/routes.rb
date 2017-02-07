@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  get 'trailer', to: 'home#trailer', as: 'trailer'
+  get 'teaser', to: 'home#teaser', as: 'teaser'
   get 'synopsis', to: 'home#synopsis', as: 'synopsis'
   get 'gallerie', to: 'home#gallery', as: 'gallery'
   get 'equipe', to: 'home#team', as: 'team'
