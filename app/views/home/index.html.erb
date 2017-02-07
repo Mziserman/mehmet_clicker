@@ -1,1 +1,41 @@
-INDEX
+<% pages = [
+  {
+    label: 'Le trailer',
+    link: trailer_path,
+    image: 'trailer'
+  },
+  {
+    label: 'Le synopsis',
+    link: synopsis_path,
+    image: 'synopsis'
+  },
+  # {
+  #   label: 'Le jeu',
+  #   link: game_path,
+  #   image: 'game'
+  # },
+  {
+    label: 'La gallerie',
+    link: gallery_path,
+    image: 'gallery'
+  },
+  {
+    label: 'L’équipe',
+    link: team_path,
+    image: 'team'
+  }
+] %>
+
+<ul class="offset-lg-2 col-lg-8 pages-grid">
+  <% pages.each do |page| %>
+    <li class="col-xs-12 col-lg-6 pages-grid__item">
+      <%= link_to(
+        page[:link],
+        class: 'pages-grid__link'
+      ) do %>
+        <span class="pages-grid__label"><%= page[:label] %></span>
+        <%= image_tag "pages/#{page[:image]}.png", class: 'pages-grid__image' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mehmet</title>
-    <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'favicon.ico' %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Mehmet</title>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <header class="header">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.png', class: 'logo' %>
+    <% end %>
+  </header>
 
-  <body>
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+
+  <footer class="footer">
+    <div class="socials">
+      <span class="socials__label">Socials</span>
+      <ul class="socials__list">
+        <% socials = [
+          {
+            link: 'https://www.facebook.com/mehmetlefilm',
+            name: 'facebook'
+          },
+          {
+            link: 'https://www.instagram.com/mehmet_le_film/',
+            name: 'instagram'
+          }
+        ] %>
+
+        <% socials.each do |social| %>
+          <li class="socials__item">
+            <%= link_to(
+              social[:link],
+              target: '_blank',
+              rel: 'noopener noreferrer'
+            ) do %>
+              <%= image_tag(
+                "socials/#{social[:name]}.svg",
+                class: 'socials__icon'
+              ) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </footer>
+</body>
 </html>

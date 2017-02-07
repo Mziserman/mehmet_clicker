@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*, ::before, ::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1em 0;
+  overflow-x: hidden;
+  background-color: $blue;
+  color: $white;
+  font: 90% / 1.5 $font-stack;
+}
+
+.container {
+  flex: 1;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+a:hover {
+  text-decoration: none;
+}
