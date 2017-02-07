@@ -12,8 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require p5.min.js
-//= require tether
-//= require bootstrap-sprockets
 //= require turbolinks
-//= require_tree .
+//= require_tree ./home

@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  get 'game/index'
+  root to: 'home#index'
+  get 'trailer', to: 'home#trailer', as: 'trailer'
+  get 'synopsis', to: 'home#synopsis', as: 'synopsis'
+  get 'gallerie', to: 'home#gallery', as: 'gallery'
+  get 'equipe', to: 'home#team', as: 'team'
+
+  devise_for :users
+
+  get 'jeu', to: 'game#index', as: 'game'
+  get 'jeu/jouer', to: 'game#game'
 
   get 'team/index'
   get 'team/join'
   get 'team/tampon'
-  get "home/index"
-
-
-  devise_for :users
-
-  root to: "home#landing"
 end

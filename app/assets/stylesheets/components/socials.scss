@@ -1,0 +1,26 @@
+.socials {
+  text-align: center;
+}
+
+.socials__label {
+  font-size: 85%;
+  color: $grey;
+  text-transform: uppercase;
+}
+
+.socials__list {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.socials__item {
+  display: inherit;
+  margin-left: 30px;
+}
+
+.socials__icon {
+  display: inline-block;
+  height: 1.2em;
+}
