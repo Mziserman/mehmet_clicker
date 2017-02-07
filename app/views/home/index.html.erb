@@ -33,7 +33,9 @@
         page[:link],
         class: 'pages-grid__link'
       ) do %>
-        <span class="pages-grid__label"><%= page[:label] %></span>
+        <span class="pages-grid__label-wrapper">
+          <span class="pages-grid__label"><%= page[:label] %></span>
+        </span>
         <%= image_tag "pages/#{page[:image]}.png", class: 'pages-grid__image' %>
       <% end %>
     </li>

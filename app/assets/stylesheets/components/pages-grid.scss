@@ -1,4 +1,6 @@
 @import 'vendors/include-media';
+$fade-in-slide-up-duration: 500ms;
+$fade-in-slide-up-delay: 200ms;
 
 .pages-grid {
   list-style: none;
@@ -15,9 +17,10 @@
     position: relative;
     float: left;
     margin-top: 0;
+    animation: fade-in-slide-up $fade-in-slide-up-duration both;
 
     &:nth-child(odd) {
-      .pages-grid__label {
+      .pages-grid__label-wrapper {
         top: 4em;
         left: 80%;
       }
@@ -26,10 +29,26 @@
     &:nth-child(even) {
       margin-top: 20%;
 
-      .pages-grid__label {
+      .pages-grid__label-wrapper {
         bottom: 4em;
         right: 80%;
         text-align: right;
+      }
+    }
+
+    &:first-child {
+      .pages-grid__label-wrapper {
+        animation-delay: $fade-in-slide-up-duration + $fade-in-slide-up-delay;
+      }
+    }
+
+    @for $i from 2 through 5 {
+      &:nth-child(#{$i}) {
+        animation-delay: $fade-in-slide-up-delay * $i;
+
+        .pages-grid__label-wrapper {
+          animation-delay: $fade-in-slide-up-duration + ($fade-in-slide-up-delay * $i);
+        }
       }
     }
   }
@@ -46,18 +65,44 @@
     .pages-grid__image {
       opacity: 1;
     }
+
+    .pages-grid__label-wrapper::before {
+      width: 102%;
+    }
+  }
+}
+
+.pages-grid__label-wrapper {
+  margin-bottom: 1em;
+  z-index: 100;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -4%;
+    display: block;
+    width: 0;
+    height: 100%;
+    background: $darker-orange;
+    transition: width 500ms;
+    z-index: -1;
+  }
+
+  @include media('>=large') {
+    position: absolute;
+    margin: 0;
+    text-align: left;
+    animation: fade-in $fade-in-slide-up-duration both;
   }
 }
 
 .pages-grid__label {
   display: block;
-  width: 100%;
   text-align: center;
-  margin-bottom: 1em;
   color: $dark-orange;
   text-transform: uppercase;
-  z-index: 100;
   letter-spacing: 14px;
+  white-space: nowrap;
 
   @supports (
     (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent)
@@ -65,11 +110,5 @@
     background: $orange-gradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  @include media('>=large') {
-    position: absolute;
-    margin: 0;
-    text-align: left;
   }
 }
