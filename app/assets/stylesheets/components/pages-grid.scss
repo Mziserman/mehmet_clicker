@@ -67,7 +67,7 @@ $fade-in-slide-up-delay: 200ms;
     }
 
     .pages-grid__label-wrapper::before {
-      width: 102%;
+      width: 104%;
     }
   }
 }
@@ -79,7 +79,7 @@ $fade-in-slide-up-delay: 200ms;
     &::before {
       content: '';
       position: absolute;
-      left: -4%;
+      left: -2%;
       display: block;
       width: 0;
       height: 100%;
@@ -101,6 +101,7 @@ $fade-in-slide-up-delay: 200ms;
   color: $dark-orange;
   text-transform: uppercase;
   letter-spacing: 14px;
+  margin-right: -14px;
   white-space: nowrap;
   margin-bottom: 1em;
 
