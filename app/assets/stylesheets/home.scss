@@ -88,40 +88,39 @@
 			margin-bottom: 30px;
 		}
 	}
-
-	.home {
-		color: white;
-		.anouncer {
-			width: 171px;
-			margin: 0 auto;
-			text-align: center;
-			p {
-			    letter-spacing: 9px;
-			    padding-left: 9px;
-			}
-			margin-bottom: 75px;
+}
+.home {
+	color: white;
+	.anouncer {
+		width: 171px;
+		margin: 0 auto;
+		text-align: center;
+		p {
+		    letter-spacing: 9px;
+		    padding-left: 9px;
 		}
-		.presentation {
-			width: 100%;
-			margin-bottom: 75px;
-			text-align: center;
-		}
-		.team_name {
-			margin-bottom: 5px;
-		}
-		.jauge {
-			width: 100%;
+		margin-bottom: 75px;
+	}
+	.presentation {
+		width: 100%;
+		margin-bottom: 75px;
+		text-align: center;
+	}
+	.team_name {
+		margin-bottom: 5px;
+	}
+	.jauge {
+		width: 100%;
+		height: 5px;
+		background-color: $light-black;
+		margin-bottom: 5px;
+		.indicator {
 			height: 5px;
-			background-color: $light-black;
-			margin-bottom: 5px;
-			.indicator {
-				height: 5px;
-			}
 		}
-		a.join_team {
-			margin-bottom: 15px;
-			position: absolute;
-			right: 0;
-		}
+	}
+	a.join_team {
+		margin-bottom: 15px;
+		position: absolute;
+		right: 0;
 	}
 }
