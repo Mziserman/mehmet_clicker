@@ -14,7 +14,7 @@ class TeamController < ApplicationController
       iu = InvitedUser.create(team_id: params[:id])
     end
 
-    redirect_to :controller => "game", :action => "index"
+    redirect_to :controller => "game", :action => "game"
   end
 
   def index
