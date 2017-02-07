@@ -11,9 +11,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 1em 0;
+  padding-top: 3em;
+  padding-bottom: 1em;
   overflow-x: hidden;
-  background-color: $blue;
+  background-color: $rina-black;
   color: $white;
   font: 90% / 1.5 $font-stack;
 }

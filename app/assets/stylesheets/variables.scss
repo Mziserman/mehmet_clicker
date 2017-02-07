@@ -6,14 +6,14 @@ $breakpoints: (
 ) !default;
 
 // Typography
-$font-stack: 'Avenir-Heavy', 'Helvetica Neue Light', 'Helvetica', 'Arial', sans-serif;
+$font-stack: 'Arial', 'Helvetica Neue Light', 'Helvetica', sans-serif;
 $font-size: 1em;
 $font-size-large: 2em;
 
 // Colors
 $black: #1F1F1F;
+$rina-black: #14151b;
 $white: rgb(255, 255, 255);
-$blue: rgb(31, 34, 45);
 $grey: rgb(134, 134, 134);
 $light-orange: rgb(255, 188, 116);
 $dark-orange: rgb(255, 128, 128);

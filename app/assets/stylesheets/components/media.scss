@@ -1,0 +1,9 @@
+@import 'vendors/include-media';
+
+.media {
+  @include media('<medium') {
+    padding: 0;
+  }
+
+  margin-top: 2em;
+}
