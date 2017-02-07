@@ -1,6 +1,6 @@
 require 'thread'
 
-class Lock
+module Lock
   def self.mutex
     @mutex ||= Mutex.new
   end

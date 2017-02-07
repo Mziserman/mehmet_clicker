@@ -35,7 +35,7 @@ function draw() {
   	text("+ " + Math.floor(b.bonus), b.x, b.y)
   }
   for (var i = 0; i < toRemove.length; i++) {
-	bubbles.splice(toRemove[i], 1)
+    bubbles.splice(toRemove[i], 1)
   }
   toRemove = [];
 }
@@ -63,25 +63,33 @@ $(document).on('click', '#clicker', function(e) {
   if ($('.score.' + team_name).html() != undefined) {
   	var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
   	if (current < score) {
-      $('.score.' + team_name).html(score);
-      $('.team_score.' + team_name).html(score);
+      $('.score.' + team_name).html(str);
+      $('.team_score.' + team_name).html(str);
     } 
   }
-  $('.team_score.' + team_name).html(str);
-  $('.score').html(str);
+  // $('.team_score.' + team_name).html(str);
+  // $('.score').html(str);
 })
 
 $(document).on('click', '.level_up_bonuses a', function(e) {
   bonus_id = $(e.target).parents('div').data("id")
+  var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
+  App.game.update_score(current)
   App.game.level_up(bonus_id)
   e.preventDefault()
 })
 
 $(document).on('click', '.level_up_auto_bonuses a', function(e) {
   bonus_id = $(e.target).parents('div').data("id")
+  var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
+  App.game.update_score(current)
   App.game.level_up_auto(bonus_id)
   e.preventDefault()
 })
+
+update_score = function() {
+
+}
 
 Bubble = function(bonus) {
 	this.init(bonus)

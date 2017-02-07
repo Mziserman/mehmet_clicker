@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get 'team/index'
   get 'team/join'
   get 'team/tampon'
+  get "home/index"
+
 
   devise_for :users
 
-  root to: "home#index"
+  root to: "home#landing"
 end

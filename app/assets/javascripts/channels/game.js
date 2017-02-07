@@ -25,7 +25,7 @@ $(document).ready(function() {
             $('.team_score.' + data.team_name).html(data.score);
             if (data.bonus != undefined) {
               bubble(data.bonus)
-              bonus = data.bonus * 1;
+              bonus = parseInt(data.bonus);
             }
           }
         }
@@ -41,8 +41,9 @@ $(document).ready(function() {
         $('.level_up_bonuses div[data-id="' + data.bonus_id + '"]')
           .find('span.click_bonus').html(data.click_bonus)
 
-        if (data.score != undefined) {
+        if ($('.score.' + data.team_name).html() != undefined) {
           $('.score.' + data.team_name).html(data.score);
+          $('.team_score.' + data.team_name).html(data.score)
         }
       }
       if (data.auto_clicker_bonus_id != undefined) {
@@ -54,7 +55,8 @@ $(document).ready(function() {
           .find('span.click_bonus').html(data.click_bonus)
 
         if ($('.score.' + data.team_name).html() != undefined) {
-          $('.team_score.' + data.team_name).html(data.score);
+          $('.score.' + data.team_name).html(data.score)
+          $('.team_score.' + data.team_name).html(data.score)
         }
       }
 
@@ -82,8 +84,8 @@ $(document).ready(function() {
       return this.perform('get_team')
     },
 
-    update_server_score: function(click_count) {
-      return this.perform('update_score', {click_count: click_count})
+    update_score: function(score) {
+      return this.perform('update_server_score', {score: score})
     }
   });
 })

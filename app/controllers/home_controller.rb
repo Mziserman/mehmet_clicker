@@ -15,4 +15,7 @@ class HomeController < ApplicationController
     @teams = Team.all
     @goals = Goal.all
   end
+
+  def landing
+  end
 end
