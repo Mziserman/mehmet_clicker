@@ -11,7 +11,7 @@ class GameChannel < ApplicationCable::Channel
 
   def click(data)
     team = Team.find(current_user.team_id)
-    ModifyTeamScoreWorker.new.perform(team.id, team.click_bonus)
+    ModifyTeamScoreWorker.perform_async(team.id, team.click_bonus)
     update_completion()
   end
 

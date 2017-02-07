@@ -57,7 +57,7 @@ function bubble(bonus) {
 $(document).on('click', '#clicker', function(e) {
   e.preventDefault();
   App.game.click();
-  bubble(bonus);
+  // bubble(bonus);
   var score = parseInt($('.score').html().replace(/\s/g, ''))
 
   score += bonus;
@@ -78,7 +78,6 @@ $(document).on('click', '#clicker', function(e) {
 $(document).on('click', '.level_up_bonuses a', function(e) {
   bonus_id = $(e.target).parents('div').data("id")
   var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
-  App.game.update_score(current)
   App.game.level_up(bonus_id)
   e.preventDefault()
 })
@@ -86,14 +85,9 @@ $(document).on('click', '.level_up_bonuses a', function(e) {
 $(document).on('click', '.level_up_auto_bonuses a', function(e) {
   bonus_id = $(e.target).parents('div').data("id")
   var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
-  App.game.update_score(current)
   App.game.level_up_auto(bonus_id)
   e.preventDefault()
 })
-
-update_score = function() {
-
-}
 
 Bubble = function(bonus) {
 	this.init(bonus)

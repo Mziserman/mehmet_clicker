@@ -16,4 +16,5 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require_tree ./channels
 //= require_tree ./game

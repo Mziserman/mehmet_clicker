@@ -1,3 +1,6 @@
+//= require_tree ../
+
+
 var bonus = 0;
 var team_name = "a"
 $(document).ready(function() {  
@@ -13,13 +16,13 @@ $(document).ready(function() {
     },
 
     received: function(data) {
-      console.log(data)
       if (data.score != undefined) {
         if ($('.score.' + data.team_name).html() != undefined) {
           var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))
           var server = parseInt(data.score.replace(/\s/g, ''))
           console.log(current)
           console.log(server)
+          console.log("__________")
           if (current < server) {
             $('.score.' + data.team_name).html(data.score);
             $('.team_score.' + data.team_name).html(data.score);
@@ -83,9 +86,5 @@ $(document).ready(function() {
     get_team: function() {
       return this.perform('get_team')
     },
-
-    update_score: function(score) {
-      return this.perform('update_server_score', {score: score})
-    }
   });
 })
