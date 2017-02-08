@@ -1,1 +1,85 @@
-TEAM
+<% team_members = [
+  {
+    name: 'A.',
+    surname: 'Louis',
+    role: 'Réalisateur',
+    image: 'louis-amiot'
+  },
+  {
+    name: 'A.',
+    surname: 'Arnaud',
+    role: 'Monteur',
+    image: 'arnaud-allouis'
+  },
+  {
+    name: 'A.',
+    surname: 'Nicolas',
+    role: 'Making of',
+    image: 'nicolas-aguado'
+  },
+  {
+    name: 'B.',
+    surname: 'Tom',
+    role: 'Régisseur',
+    image: 'tom-bonnike'
+  },
+  {
+    name: 'G.',
+    surname: 'Martin',
+    role: 'Scripte',
+    image: 'martin-goutry'
+  },
+  {
+    name: 'L.S.',
+    surname: 'Morgane',
+    role: 'Scénariste',
+    image: 'morgane-lesaout'
+  },
+  {
+    name: 'P.',
+    surname: 'Julia',
+    role: 'Co-réalisatrice',
+    image: 'julia-parrinello'
+  },
+  {
+    name: 'R.',
+    surname: 'Chrissen',
+    role: 'Cadreur',
+    image: 'chrissen-rajathurai'
+  },
+  {
+    name: 'V.',
+    surname: 'Thomas',
+    role: 'Preneur de son',
+    image: 'thomas-victoria'
+  },
+  {
+    name: 'Z.',
+    surname: 'Martin',
+    role: 'Régisseur',
+    image: 'martin-ziserman'
+  }
+] %>
+
+<div class="team">
+  <h1 class="title">L’équipe</h1>
+
+  <div class="row team-gallery">
+    <% team_members.each do |member| %>
+      <div class="col-md-4 team-gallery__item">
+        <%= image_tag "team/#{member[:image]}.jpg" %>
+
+        <div class="team-gallery__item-details">
+          <span class="team-gallery__member">
+            <%= member[:surname] %>
+            <span class="team-gallery__member-name"><%= member[:name] %></span>
+          </span>
+
+          <span class="team-gallery__role">
+            <%= member[:role] %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

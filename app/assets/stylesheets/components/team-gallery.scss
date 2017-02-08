@@ -1,0 +1,28 @@
+.team-gallery {
+  margin-top: 5em;
+}
+
+.team-gallery__item {
+  margin-bottom: 4em;
+}
+
+.team-gallery__item-details {
+  text-align: center;
+  margin-top: 2.5em;
+  text-transform: uppercase;
+}
+
+.team-gallery__member {
+  letter-spacing: 2px;
+}
+
+.team-gallery__member-name {
+  font-weight: bold;
+}
+
+.team-gallery__role {
+  display: block;
+  font-size: 75%;
+  color: $dark-grey;
+  letter-spacing: 4px;
+}
