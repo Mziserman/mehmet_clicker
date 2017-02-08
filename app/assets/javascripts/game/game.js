@@ -60,7 +60,7 @@ $(document).on('click', '#clicker', function(e) {
   if (bonus > 0) {
     bubble(bonus);
     var score = parseInt($('.score').html().replace(/\s/g, ''))
-    
+
     score += bonus;
     str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
     str = str.substring(0, str.length - 3);
