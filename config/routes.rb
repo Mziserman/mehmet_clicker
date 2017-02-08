@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'teaser', to: 'home#teaser', as: 'teaser'
   get 'synopsis', to: 'home#synopsis', as: 'synopsis'
-  get 'gallerie', to: 'home#gallery', as: 'gallery'
+  get 'galerie', to: 'home#gallery', as: 'gallery'
   get 'equipe', to: 'home#team', as: 'team'
 
   devise_for :users
