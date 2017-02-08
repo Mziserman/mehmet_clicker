@@ -57,18 +57,20 @@ function bubble(bonus) {
 $(document).on('click', '#clicker', function(e) {
   e.preventDefault();
   App.game.click();
-  bubble(bonus);
-  var score = parseInt($('.score').html().replace(/\s/g, ''))
+  if (bonus > 0) {
+    bubble(bonus);
+    var score = parseInt($('.score').html().replace(/\s/g, ''))
 
-  score += bonus;
-  str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
-  str = str.substring(0, str.length - 3);
+    score += bonus;
+    str = score.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ');
+    str = str.substring(0, str.length - 3);
 
-  if ($('.score.' + team_name).html() != undefined) {
-  	var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
-  	if (current < score) {
-      $('.score.' + team_name).html(str);
-      $('.team_score.' + team_name).html(str);
+    if ($('.score.' + team_name).html() != undefined) {
+      var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
+      if (current < score) {
+        $('.score.' + team_name).html(str);
+        $('.team_score.' + team_name).html(str);
+      }
     }
   }
   // $('.team_score.' + team_name).html(str);
