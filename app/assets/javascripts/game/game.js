@@ -79,6 +79,7 @@ $(document).on('click', '#clicker', function(e) {
 })
 
 $(document).on('click', '.level_up_bonuses a', function(e) {
+  bonus = 0;
   bonus_id = $(e.target).parents('div').data("id")
   var current = parseInt($('.score.' + team_name).html().replace(/\s/g, ''))
   App.game.level_up(bonus_id)
