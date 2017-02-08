@@ -1,7 +1,5 @@
 .synopsis {
-  position: absolute;
+  align-self: center;
+  margin: 0 auto;
   max-width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
