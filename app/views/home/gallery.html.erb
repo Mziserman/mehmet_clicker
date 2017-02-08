@@ -1,1 +1,19 @@
-GALLERY
+<div class="gallery">
+  <h1 class="title">La gallerie</h1>
+
+  <div class="row instagram-gallery">
+    <% @medias.each do |media| %>
+      <div class="col-md-3 instagram-gallery__item">
+        <a target="_blank" rel="noopener noreferrer" href="<%= media[:link] %>">
+          <% if media[:type] == 'image' %>
+            <img src="<%= media[:url] %>">
+          <% elsif media[:type] == 'video' %>
+            <video controls>
+              <source src="<%= media[:url] %>" type="video/mp4">
+            </video>
+          <% end %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>

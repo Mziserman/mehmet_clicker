@@ -3,9 +3,11 @@
 @import 'base';
 @import 'animations';
 
+@import 'pages/gallery';
 @import 'pages/synopsis';
 @import 'pages/teaser';
 
+@import 'components/instagram-gallery';
 @import 'components/logo';
 @import 'components/media';
 @import 'components/pages-grid';
