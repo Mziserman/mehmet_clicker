@@ -15,7 +15,8 @@ $(document).ready(function() {
       // Called when the subscription has been terminated by the server
     },
 
-    received: function(data) {
+    received: function(data) {$
+      console.log(data)
       if (data.score != undefined) {
         if ($('.score.' + data.team_name).html() != undefined) {
           var current = parseInt($('.score.' + data.team_name).html().replace(/\s/g, ''))

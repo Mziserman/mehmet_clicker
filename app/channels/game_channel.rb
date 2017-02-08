@@ -11,7 +11,20 @@ class GameChannel < ApplicationCable::Channel
 
   def click(data)
     team = Team.find(current_user.team_id)
-    ModifyTeamScoreWorker.perform_async(team.id, team.click_bonus)
+    # ModifyTeamScoreWorker.perform_async(team.id, team.click_bonus)
+
+    team.with_lock do
+      team.score += 1 + team.click_bonus
+      team.save!
+    end
+    # team.update!(score: team.score + 1 + increment)
+
+    template = 'team_%s'
+    channel = template % [team.id]
+
+
+    ActionCable.server.broadcast(channel, score: render_number(team.score),
+      bonus: 1 + team.click_bonus, team_name: team.name)
     update_completion()
   end
 

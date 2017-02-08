@@ -19,8 +19,7 @@ class AutoClickerBonusWorker
       completion = find_completion(t)
 
       ActionCable.server.broadcast(channel, score: render_number(t.score),
-        bonus: score_bonus, completion: completion,
-        team_name: t.name)
+        bonus: score_bonus, team_name: t.name)
 
       Team.find_each do |team|
         template = 'team_%s'

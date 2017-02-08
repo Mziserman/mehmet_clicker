@@ -57,7 +57,7 @@ function bubble(bonus) {
 $(document).on('click', '#clicker', function(e) {
   e.preventDefault();
   App.game.click();
-  // bubble(bonus);
+  bubble(bonus);
   var score = parseInt($('.score').html().replace(/\s/g, ''))
 
   score += bonus;
