@@ -4,15 +4,17 @@
   <div class="row instagram-gallery">
     <% @medias.each do |media| %>
       <div class="col-md-3 instagram-gallery__item">
-        <a target="_blank" rel="noopener noreferrer" href="<%= media[:link] %>">
+        <%= link_to(
+          media[:link],
+          target: '_blank',
+          rel: 'noopener noreferrer'
+        ) do %>
           <% if media[:type] == 'image' %>
-            <img src="<%= media[:url] %>">
+            <%= image_tag media[:url] %>
           <% elsif media[:type] == 'video' %>
-            <video controls>
-              <source src="<%= media[:url] %>" type="video/mp4">
-            </video>
+            <%= video_tag media[:url], controls: true %>
           <% end %>
-        </a>
+        <% end %>
       </div>
     <% end %>
   </div>
